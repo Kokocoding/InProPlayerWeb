@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    @{
+        for (int i = 1; i <= int.Parse(ViewData["groupCount"].ToString()); i++)
+        {
+            <div class="group col-md-2 col-sm-6 col-xs-12">
+                <div class="group-title">
+                    群組 @i
+                </div>
+                <button type="button" class="mBtn btn btn-primary bi bi-toggle2-on" data-type="group" data-num="@i">
+                    開啟
+                </button>
+            </div>
+        }
+    }
+</div>
+<hr>
+<div class="row">
+    @{
+        for (int i = 1; i <= int.Parse(ViewData["areaCount"].ToString()); i++)
+        {
+            <div class="area col-md-2 col-sm-6 col-xs-12">
+                <div class="area-title">
+                    @i.ToString().PadLeft(3, '0')
+                </div>
+                <button type="button" class="mBtn btn btn-primary bi bi-toggle2-on" data-type="area" data-num="@i">
+                    開啟
+                </button>
+            </div>
+        }
+    }
+</div>
