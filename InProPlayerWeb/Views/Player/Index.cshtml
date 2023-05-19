@@ -1,0 +1,81 @@
+﻿@using System.Linq;
+@using InProPlayerWeb.Helper;
+
+<link href="~/css/player.css" rel="stylesheet" />
+<div id="playerList">
+    <form class="row" method="post" enctype="multipart/form-data" action="/Player/Upload">
+        <div class="col-auto">
+            <input class="form-control" type="file" id="formFileMultiple" name="files" multiple accept="audio/mp3,audio/*;capture=microphone">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">上傳</button>
+        </div>
+    </form>
+
+    <ul>
+        @foreach (var fileName in ViewBag.fileList)
+        {
+            <li class="selectFile">@fileName</li>
+        }
+    </ul>
+    @{
+        var currentPage = ViewBag.CurrentPage;
+        var totalPages = ViewBag.TotalPages;
+    }
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="/Player/Index/1">&laquo;</a>
+            </li>
+            @foreach (var i in PageHelper.GetDisplayedPages(currentPage, totalPages))
+            {
+                <li class="page-item @(i == currentPage ? "active" : "")">
+                    <a class ="page-link" href="/Player/Index/@i">@i</a>
+                </li>
+            }
+            <li class="page-item">
+                <a class="page-link" href="/Player/Index/@totalPages">&raquo;</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div id="app-cover">    
+    <div id="player">
+        <div id="player-track">
+            <div id="album-name"></div>
+            <div id="track-name"></div>
+            <div id="track-time">
+                <div id="current-time"></div>
+                <div id="track-length"></div>
+            </div>
+            <div id="s-area">
+                <div id="ins-time"></div>
+                <div id="s-hover"></div>
+                <div id="seek-bar"></div>
+            </div>
+        </div>
+        <div id="player-content">
+            <div id="player-controls">
+                <div class="control">
+                    <div class="button" id="play-previous">
+                        <i class="bi bi-rewind-fill"></i>
+                    </div>
+                </div>
+                <div class="control">
+                    <div class="button" id="play-pause-button">
+                        <i class="bi bi-play-fill"></i>
+                    </div>
+                </div>
+                <div class="control">
+                    <div class="button" id="play-next">
+                        <i class="bi bi-fast-forward-fill"></i>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <input type="range" id="range" class="form-range" min="0" max="100" step="1" />
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/js/player.js"></script>
