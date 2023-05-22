@@ -19,7 +19,7 @@
 </head>
 <body>
     <header>
-        <nav class="bg-info bg-gradient navbar">
+        <nav class="bg-dark navbar">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                     <img src="~/images/logo.png" width="100" height="25" />
@@ -30,17 +30,17 @@
 
     <div class="container-fluid">
         <div class="row flex-nowrap">
-            <div class="col-auto col-md-2 col-xl-2 px-sm-2 px-0 bg-white bg-gradient">
+            <div class="col-auto col-md-2 col-xl-2 px-sm-2 px-0 bg-dark">
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                         <li class="nav-item">
                             <a href="/Home/Index" class="nav-link align-middle px-0">
-                                <i class="fs-4 bi-house"></i><span class="ms-1 d-none d-sm-inline">分區控制</span>
+                                <i class="fs-4 bi-house"></i><span class="text-white ms-1 d-none d-sm-inline">分區控制</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/Player/Index" class="nav-link align-middle px-0">
-                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">撥放器</span>
+                                <i class="fs-4 bi-speedometer2"></i> <span class="text-white ms-1 d-none d-sm-inline">撥放器</span>
                             </a>
                         </li>
 @*                        <li>
@@ -118,7 +118,7 @@
                 </div>
             </div>
             <div class="col py-3">
-                <main role="main" class="pb-3">
+                <main role="main" class="main pb-3">
                     @RenderBody()
                 </main>
             </div>

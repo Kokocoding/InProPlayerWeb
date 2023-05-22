@@ -3,25 +3,19 @@ using System.IO.Ports;
 
 namespace InProPlayerWeb.Helper
 {
-    public interface IPortHelper
-    {
-        void OpenPort();
-        void PortWrite(byte[] data);
-        void Sp_DataReceived(object sender, SerialDataReceivedEventArgs e);
-        byte[] CreateCommand(bool[] boolList);
-        byte[] CmdAllCall(bool isOn);
-        byte[] Crc32(byte[] hex);
-    }
-
-    public class PortHelper : IPortHelper
+    public class PortHelper
     {
         private readonly SerialPort _sp;
+
         public static byte[] CmdFrequAndTemp = new byte[] { 0xAA, 0xA4, 0x00, 0x00, 0x00, 0x00, 0xBF };
         public static byte[] CmdPwrAndSwr = new byte[] { 0xAA, 0xA3, 0x00, 0x00, 0x00, 0x00, 0xEE };
 
+        public string PortName = "Com1";
+        public int BaudRate = 9600;
+
         public PortHelper()
         {
-            _sp = new SerialPort();
+            _sp = new SerialPort();            
             OpenPort();
         }
 
@@ -31,8 +25,8 @@ namespace InProPlayerWeb.Helper
             {
                 _sp.Close();
             }
-            _sp.PortName = "COM3";
-            _sp.BaudRate = 9600;
+            _sp.PortName = PortName;
+            _sp.BaudRate = BaudRate;
             _sp.Parity = Parity.None;
             _sp.DataBits = 8;
             _sp.StopBits = StopBits.One;
@@ -67,7 +61,7 @@ namespace InProPlayerWeb.Helper
             }
         }
 
-        public void Sp_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        public void PortRead(object sender, SerialDataReceivedEventArgs e)
         {
             int length = _sp.BytesToRead;
             byte[] buffer = new byte[length];

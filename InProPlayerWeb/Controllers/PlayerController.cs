@@ -7,11 +7,16 @@ namespace InProPlayerWeb.Controllers
     public class PlayerController : Controller
     {
         private readonly IWebHostEnvironment _hostingEnvironment;
-        NAudioHelper np = new NAudioHelper();
+        private readonly ApplicationDbContext _context;
+        private readonly NAudioHelper _np;
 
-        public PlayerController(IWebHostEnvironment hostingEnvironment)
+        //NAudioHelper np = new NAudioHelper();
+
+        public PlayerController(IWebHostEnvironment hostingEnvironment, ApplicationDbContext context, NAudioHelper np)
         {
             _hostingEnvironment = hostingEnvironment;
+            _context = context;
+            _np = np;
         }
 
         [HttpGet("Player/Index/{page?}")]
@@ -81,8 +86,23 @@ namespace InProPlayerWeb.Controllers
         public void PlaySelector(string fileName)
         {
             string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
-            np.audioFilePath = uploadsFolder+"\\"+fileName;
-            np.Play();
+            _np.audioFilePath = uploadsFolder+"\\"+fileName;
+            _np.Play();
+        }
+
+        [HttpPost]
+        public string Play(string fileName)
+        {
+            string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
+            _np.audioFilePath = uploadsFolder + "\\" + fileName;
+            _np.Play();
+            return "success";
+        }
+        [HttpPost]
+        public string Stop()
+        {
+            _np.Stop();
+            return "success";
         }
     }
 }

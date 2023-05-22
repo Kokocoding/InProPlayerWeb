@@ -5,14 +5,21 @@ namespace InProWeb.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ApplicationDbContext _context;
+        private readonly PortHelper _portHelper;
+
         private readonly int areaCount = 20;
-        private readonly int groupCount = 6;
-        private readonly IPortHelper _portHelper;
+        private readonly int groupCount = 6;        
         private bool[] ZoneStatus = Enumerable.Repeat(false, 20).ToArray();
 
-        public HomeController(IPortHelper portHelper)
+        public HomeController(PortHelper portHelper, ApplicationDbContext context)
         {
             _portHelper = portHelper;
+            _context = context;
+
+            var configDB = _context.Configuration.ToList();
+            _portHelper.PortName = configDB[0].PortName;
+            _portHelper.BaudRate = configDB[0].BaudRate;
         }
 
         public IActionResult Index()

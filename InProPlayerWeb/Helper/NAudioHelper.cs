@@ -4,9 +4,10 @@ namespace InProPlayerWeb.Helper
 {
     public class NAudioHelper 
     {
-        public string audioFilePath = "";
         private WaveOutEvent outputDevice;
         private AudioFileReader audioFile;
+
+        public string audioFilePath = "";
 
         public void Play()
         {
@@ -35,6 +36,18 @@ namespace InProPlayerWeb.Helper
             {
                 outputDevice.Dispose();
                 outputDevice = null;
+            }
+        }
+
+        public TimeSpan GetCurrentTime()
+        {
+            if (audioFile != null)
+            {
+                return audioFile.CurrentTime;
+            }
+            else
+            {
+                return TimeSpan.Zero;
             }
         }
     }

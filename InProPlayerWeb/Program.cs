@@ -1,10 +1,16 @@
 using InProPlayerWeb.Helper;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<IPortHelper, PortHelper>();
+builder.Services.AddSingleton<PortHelper>();
+builder.Services.AddSingleton<NAudioHelper>();
+
+builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseSqlite(
+    builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 var app = builder.Build();
 

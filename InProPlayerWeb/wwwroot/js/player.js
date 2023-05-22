@@ -1,7 +1,6 @@
 $(function () {
     var playerTrack = $("#player-track"),
         albumName = $("#album-name"),
-        trackName = $("#track-name"),
         sArea = $("#s-area"),
         seekBar = $("#seek-bar"),
         trackTime = $("#track-time"),
@@ -27,20 +26,6 @@ $(function () {
         nTime = 0,
         buffInterval = null,
         tFlag = false,
-        albums = [
-            "Dawn",
-            "Me & You",
-            "Electro Boy",
-            "Home",
-            "Proxy (Original Mix)"
-        ],
-        trackNames = [
-            "Skylike - Dawn",
-            "Alex Skrindo - Me & You",
-            "Kaaze - Electro Boy",
-            "Jordan Schor - Home",
-            "Martin Garrix - Proxy"
-        ],
         trackUrl = [
             "https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/2.mp3",
             "https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/1.mp3",
@@ -48,45 +33,67 @@ $(function () {
             "https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/4.mp3",
             "https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/5.mp3"
         ],
-        playPreviousTrackButton = $("#play-previous"),
-        playNextTrackButton = $("#play-next"),
-        currIndex = -1;
+        nowPlay = $(".selectFile").first().html(),
+        isPlay = false;
 
     range.on("change", function () {
 
     });
 
     $(".selectFile").on("click", function () {
+        nowPlay = $(this).html();
+        isPlay = true;
+        albumName.html(nowPlay);
+        playerTrack.addClass("active");
+        checkBuffering();
+        i.attr("class", "bi bi-pause-fill");
         $.ajax({
             type: "POST",
             url: "/Player/PlaySelector",
             data: {
-                fileName: $(this).html()
+                fileName: nowPlay
             },
             dataType: "json",
             success: function (response) {
                 console.log(response);
-            },
-            error: function (thrownError) {
-
             }
         });
     });
 
     function playPause() {
-        setTimeout(function () {
-            if (audio.paused) {
-                playerTrack.addClass("active");
-                checkBuffering();
-                i.attr("class", "bi bi-pause-fill");
-                audio.play();
-            } else {
-                playerTrack.removeClass("active");
-                clearInterval(buffInterval);
-                i.attr("class", "bi bi-play-fill");
-                audio.pause();
-            }
-        }, 300);
+        if (!isPlay) {
+            isPlay = true;
+            albumName.html(nowPlay);
+            playerTrack.addClass("active");
+            checkBuffering();
+            i.attr("class", "bi bi-pause-fill");
+            $.ajax({
+                type: "POST",
+                url: "/Player/Play",
+                data: {
+                    fileName: nowPlay
+                },
+                dataType: "json",
+                success: function (response) {                    
+                }
+            });
+        } else {
+            isPlay = false;
+            albumName.html("");
+            playerTrack.removeClass("active");
+            clearInterval(buffInterval);
+            i.attr("class", "bi bi-play-fill");
+            $.ajax({
+                type: "POST",
+                url: "/Player/Stop",
+                data: {
+                    fileName: nowPlay
+                },
+                dataType: "json",
+                success: function (response) {                    
+                }
+            });
+        }
     }
 
     function showHover(event) {
@@ -181,48 +188,7 @@ $(function () {
         }, 100);
     }
 
-    function selectTrack(flag) {
-        if (flag == 0 || flag == 1) ++currIndex;
-        else --currIndex;
-
-        if (currIndex > -1) {
-            if (flag == 0) i.attr("class", "bi bi-play-fill");
-            else {
-                i.attr("class", "bi bi-pause-fill");
-            }
-
-            seekBar.width(0);
-            trackTime.removeClass("active");
-            tProgress.text("00:00");
-            tTime.text("00:00");
-
-            currAlbum = albums[currIndex];
-            currTrackName = trackNames[currIndex];
-            audio.src = trackUrl[currIndex];
-
-            nTime = 0;
-            bTime = new Date();
-            bTime = bTime.getTime();
-
-            if (flag != 0) {
-                audio.play();
-                playerTrack.addClass("active");
-                clearInterval(buffInterval);
-                checkBuffering();
-            }
-
-            albumName.text(currAlbum);
-            trackName.text(currTrackName);
-        } else {
-            if (flag == 0 || flag == 1) --currIndex;
-            else ++currIndex;
-        }
-    }
-
     function initPlayer() {
-        audio = new Audio();
-        selectTrack(0);
-        audio.loop = false;
         playPauseButton.on("click", playPause);
         sArea.mousemove(function (event) {
             showHover(event);
@@ -230,14 +196,7 @@ $(function () {
 
         sArea.mouseout(hideHover);
         sArea.on("click", playFromClickedPos);
-        $(audio).on("timeupdate", updateCurrTime);
-        playPreviousTrackButton.on("click", function () {
-            selectTrack(-1);
-        });
-        playNextTrackButton.on("click", function () {
-            selectTrack(1);
-        });
     }
 
-    initPlayer();    
+    initPlayer();
 });

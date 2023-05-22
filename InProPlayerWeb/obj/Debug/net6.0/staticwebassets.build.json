@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2A0TupXNL/dqkEnRg3Fe8Y0CqlQqghoAKk6v4pFSi0I=",
+  "Hash": "7+tU6qSmTPCTtXWclFMNKQmSwHumcNeQclsh+cxCo/4=",
   "Source": "InProPlayerWeb",
   "BasePath": "_content/InProPlayerWeb",
   "Mode": "Default",
@@ -1224,12 +1224,12 @@
       "OriginalItemSpec": "wwwroot\\uploads\\[Hololive] 至上主義アドトラック Sijoushugi Adtruck (Flare, Kanata, Matsuri, Nene, Mio)_ctlz.mp3"
     },
     {
-      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\【Ado】踊_555x.mp3",
+      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\【Ado】踊.mp3",
       "SourceId": "InProPlayerWeb",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\",
       "BasePath": "_content/InProPlayerWeb",
-      "RelativePath": "uploads/【Ado】踊_555x.mp3",
+      "RelativePath": "uploads/【Ado】踊.mp3",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1238,7 +1238,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\【Ado】踊_555x.mp3"
+      "OriginalItemSpec": "wwwroot\\uploads\\【Ado】踊.mp3"
+    },
+    {
+      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\end of a life - Calliope Mori (Original Song).mp3",
+      "SourceId": "InProPlayerWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\",
+      "BasePath": "_content/InProPlayerWeb",
+      "RelativePath": "uploads/end of a life - Calliope Mori (Original Song).mp3",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\end of a life - Calliope Mori (Original Song).mp3"
     },
     {
       "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\SEKAI NO OWARI「Habit」_ze3r.mp3",
@@ -1258,23 +1275,6 @@
       "OriginalItemSpec": "wwwroot\\uploads\\SEKAI NO OWARI「Habit」_ze3r.mp3"
     },
     {
-      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\YOASOBI「アイドル」 Official Music Video_4zwu.mp3",
-      "SourceId": "InProPlayerWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\",
-      "BasePath": "_content/InProPlayerWeb",
-      "RelativePath": "uploads/YOASOBI「アイドル」 Official Music Video_4zwu.mp3",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\YOASOBI「アイドル」 Official Music Video_4zwu.mp3"
-    },
-    {
       "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\YOASOBI「怪物」Official Music Video\u3000(YOASOBI - Monster)_b0wx.mp3",
       "SourceId": "InProPlayerWeb",
       "SourceType": "Discovered",
@@ -1290,6 +1290,57 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\YOASOBI「怪物」Official Music Video\u3000(YOASOBI - Monster)_b0wx.mp3"
+    },
+    {
+      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\YOASOBIアイドル Official Music Video.mp3",
+      "SourceId": "InProPlayerWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\",
+      "BasePath": "_content/InProPlayerWeb",
+      "RelativePath": "uploads/YOASOBIアイドル Official Music Video.mp3",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\YOASOBIアイドル Official Music Video.mp3"
+    },
+    {
+      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\告五人 Accusefive  你所到之處就下雨Your Guilttrip  Official Music Video.mp3",
+      "SourceId": "InProPlayerWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\",
+      "BasePath": "_content/InProPlayerWeb",
+      "RelativePath": "uploads/告五人 Accusefive  你所到之處就下雨Your Guilttrip  Official Music Video.mp3",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\告五人 Accusefive  你所到之處就下雨Your Guilttrip  Official Music Video.mp3"
+    },
+    {
+      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\帶你飛.mp3",
+      "SourceId": "InProPlayerWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\",
+      "BasePath": "_content/InProPlayerWeb",
+      "RelativePath": "uploads/帶你飛.mp3",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\帶你飛.mp3"
     }
   ]
 }

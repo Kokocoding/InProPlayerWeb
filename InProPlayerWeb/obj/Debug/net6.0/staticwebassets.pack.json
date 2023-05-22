@@ -281,20 +281,32 @@
       "PackagePath": "staticwebassets\\uploads\\SEKAI NO OWARI「Habit」_ze3r.mp3"
     },
     {
-      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\YOASOBI「アイドル」 Official Music Video_4zwu.mp3",
-      "PackagePath": "staticwebassets\\uploads\\YOASOBI「アイドル」 Official Music Video_4zwu.mp3"
-    },
-    {
       "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\YOASOBI「怪物」Official Music Video\u3000(YOASOBI - Monster)_b0wx.mp3",
       "PackagePath": "staticwebassets\\uploads\\YOASOBI「怪物」Official Music Video\u3000(YOASOBI - Monster)_b0wx.mp3"
+    },
+    {
+      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\YOASOBIアイドル Official Music Video.mp3",
+      "PackagePath": "staticwebassets\\uploads\\YOASOBIアイドル Official Music Video.mp3"
     },
     {
       "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\[Hololive] 至上主義アドトラック Sijoushugi Adtruck (Flare, Kanata, Matsuri, Nene, Mio)_ctlz.mp3",
       "PackagePath": "staticwebassets\\uploads\\[Hololive] 至上主義アドトラック Sijoushugi Adtruck (Flare, Kanata, Matsuri, Nene, Mio)_ctlz.mp3"
     },
     {
-      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\【Ado】踊_555x.mp3",
-      "PackagePath": "staticwebassets\\uploads\\【Ado】踊_555x.mp3"
+      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\end of a life - Calliope Mori (Original Song).mp3",
+      "PackagePath": "staticwebassets\\uploads\\end of a life - Calliope Mori (Original Song).mp3"
+    },
+    {
+      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\【Ado】踊.mp3",
+      "PackagePath": "staticwebassets\\uploads\\【Ado】踊.mp3"
+    },
+    {
+      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\告五人 Accusefive  你所到之處就下雨Your Guilttrip  Official Music Video.mp3",
+      "PackagePath": "staticwebassets\\uploads\\告五人 Accusefive  你所到之處就下雨Your Guilttrip  Official Music Video.mp3"
+    },
+    {
+      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\帶你飛.mp3",
+      "PackagePath": "staticwebassets\\uploads\\帶你飛.mp3"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.InProPlayerWeb.Microsoft.AspNetCore.StaticWebAssets.props",

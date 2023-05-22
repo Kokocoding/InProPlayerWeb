@@ -15,7 +15,7 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-color: #f6f9ff;
+    background-color: #f5fffb;
 }
 
 /* Home */
@@ -26,5 +26,9 @@ body {
 }
 
 .group-title, .area-title {
+    margin: 10px;
+}
+
+.main {
     margin: 10px;
 }
