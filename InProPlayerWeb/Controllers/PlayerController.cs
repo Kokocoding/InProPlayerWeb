@@ -1,5 +1,6 @@
 ﻿using InProPlayerWeb.Helper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 
 namespace InProPlayerWeb.Controllers
@@ -83,26 +84,34 @@ namespace InProPlayerWeb.Controllers
         }
 
         [HttpPost]
-        public void PlaySelector(string fileName)
-        {
-            string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
-            _np.audioFilePath = uploadsFolder+"\\"+fileName;
-            _np.Play();
-        }
-
-        [HttpPost]
-        public string Play(string fileName)
+        public double Play(string fileName, double startTime)
         {
             string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
             _np.audioFilePath = uploadsFolder + "\\" + fileName;
-            _np.Play();
-            return "success";
+            TimeSpan timeSpan = TimeSpan.FromSeconds(startTime);
+            _np.startTime = timeSpan;
+            return _np.Play();
         }
         [HttpPost]
         public string Stop()
         {
             _np.Stop();
             return "success";
+        }
+        [HttpPost]
+        public double GetCurrentTime()
+        {
+            return _np.GetCurrentTime();
+        }
+        [HttpPost]
+        public double GetTotalDuration()
+        {
+            return _np.GetTotalDuration();
+        }
+        [HttpPost]
+        public void SetVolume(float volume)
+        {
+            _np.SetVolume(volume/100);
         }
     }
 }

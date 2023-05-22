@@ -22,10 +22,10 @@ $(function () {
         durMinutes,
         durSeconds,
         playProgress,
-        bTime,
         nTime = 0,
-        buffInterval = null,
         tFlag = false,
+        currentTime = 0,
+        duration = 0,
         trackUrl = [
             "https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/2.mp3",
             "https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/1.mp3",
@@ -34,72 +34,94 @@ $(function () {
             "https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/5.mp3"
         ],
         nowPlay = $(".selectFile").first().html(),
-        isPlay = false;
+        isPlay = false,
+        intervalId = null;
 
     range.on("change", function () {
-
+        $.ajax({
+            type: "POST",
+            url: "/Player/SetVolume",
+            data: {
+                volume: $(this).val()
+            },
+            dataType: "json",
+            success: function (response) {
+            }
+        });
     });
 
     $(".selectFile").on("click", function () {
+        currentTime = 0;
         nowPlay = $(this).html();
         isPlay = true;
         albumName.html(nowPlay);
         playerTrack.addClass("active");
-        checkBuffering();
         i.attr("class", "bi bi-pause-fill");
+        playAjax();
+    });
+
+    function playAjax() {
         $.ajax({
             type: "POST",
-            url: "/Player/PlaySelector",
+            url: "/Player/Play",
+            data: {
+                fileName: nowPlay,
+                startTime: currentTime
+            },
+            dataType: "json",
+            success: function (response) {
+                duration = response;
+            }
+        });
+
+        intervalId = setInterval(function () {
+            $.ajax({
+                type: "POST",
+                url: "/Player/GetCurrentTime",
+                data: {},
+                dataType: "json",
+                success: function (response) {
+                    currentTime = response;
+                    updateCurrTime();
+                }
+            });
+        }, 300);
+    }
+
+    function stopAjax() {
+        clearInterval(intervalId); // °±¤î setInterval
+        $.ajax({
+            type: "POST",
+            url: "/Player/Stop",
             data: {
                 fileName: nowPlay
             },
             dataType: "json",
             success: function (response) {
-                console.log(response);
             }
         });
-    });
+    }
 
     function playPause() {
         if (!isPlay) {
             isPlay = true;
             albumName.html(nowPlay);
             playerTrack.addClass("active");
-            checkBuffering();
             i.attr("class", "bi bi-pause-fill");
-            $.ajax({
-                type: "POST",
-                url: "/Player/Play",
-                data: {
-                    fileName: nowPlay
-                },
-                dataType: "json",
-                success: function (response) {                    
-                }
-            });
+            playAjax();
         } else {
             isPlay = false;
             albumName.html("");
             playerTrack.removeClass("active");
-            clearInterval(buffInterval);
             i.attr("class", "bi bi-play-fill");
-            $.ajax({
-                type: "POST",
-                url: "/Player/Stop",
-                data: {
-                    fileName: nowPlay
-                },
-                dataType: "json",
-                success: function (response) {                    
-                }
-            });
+            stopAjax();
         }
     }
 
     function showHover(event) {
         seekBarPos = sArea.offset();
         seekT = event.clientX - seekBarPos.left;
-        seekLoc = audio.duration * (seekT / sArea.outerWidth());
+        seekLoc = duration * (seekT / sArea.outerWidth());
 
         sHover.width(seekT);
 
@@ -127,7 +149,9 @@ $(function () {
     }
 
     function playFromClickedPos() {
-        audio.currentTime = seekLoc;
+        currentTime = seekLoc;
+        stopAjax();
+        playAjax();
         seekBar.width(seekT);
         hideHover();
     }
@@ -141,13 +165,13 @@ $(function () {
             trackTime.addClass("active");
         }
 
-        curMinutes = Math.floor(audio.currentTime / 60);
-        curSeconds = Math.floor(audio.currentTime - curMinutes * 60);
+        curMinutes = Math.floor(currentTime / 60);
+        curSeconds = Math.floor(currentTime - curMinutes * 60);
 
-        durMinutes = Math.floor(audio.duration / 60);
-        durSeconds = Math.floor(audio.duration - durMinutes * 60);
+        durMinutes = Math.floor(duration / 60);
+        durSeconds = Math.floor(duration - durMinutes * 60);
 
-        playProgress = (audio.currentTime / audio.duration) * 100;
+        playProgress = (currentTime / duration) * 100;
 
         if (curMinutes < 10) curMinutes = "0" + curMinutes;
         if (curSeconds < 10) curSeconds = "0" + curSeconds;
@@ -176,16 +200,7 @@ $(function () {
             i.attr("class", "bi bi-play-fill");
             seekBar.width(0);
             tProgress.text("00:00");
-            clearInterval(buffInterval);
         }
-    }
-
-    function checkBuffering() {
-        clearInterval(buffInterval);
-        buffInterval = setInterval(function () {
-            bTime = new Date();
-            bTime = bTime.getTime();
-        }, 100);
     }
 
     function initPlayer() {
