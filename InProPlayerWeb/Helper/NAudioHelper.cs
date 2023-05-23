@@ -19,9 +19,16 @@ namespace InProPlayerWeb.Helper
             audioFile.CurrentTime = startTime; // 设置播放的起始时间
             outputDevice = new WaveOutEvent();
             outputDevice.Init(audioFile);
-            outputDevice.Volume = Volume;
             outputDevice.Play();
-            return GetTotalDuration();
+            return (double)GetInit()["Duration"];
+        }
+
+        public void Pause()
+        {
+            if(outputDevice != null && outputDevice.PlaybackState == PlaybackState.Playing)
+            {
+                outputDevice.Pause();
+            }
         }
 
         public void Stop()
@@ -43,28 +50,44 @@ namespace InProPlayerWeb.Helper
                 outputDevice = null;
             }
         }
-
-        public double GetCurrentTime()
+        public Dictionary<string, object> GetInit()
         {
+            Dictionary<string, object> keyValuePairs = new Dictionary<string, object>(); 
             if (audioFile != null)
             {
-                return audioFile.CurrentTime.TotalSeconds;
+                string[] fileNameArr = audioFile.FileName.Split("\\");
+                string fileName = fileNameArr[fileNameArr.Length - 1];
+                keyValuePairs.Add("Duration", audioFile.TotalTime.TotalSeconds);
+                keyValuePairs.Add("CurrentTime", audioFile.CurrentTime.TotalSeconds);
+                keyValuePairs.Add("FileName", fileName);
             }
             else
             {
-                return TimeSpan.Zero.TotalSeconds;
+                keyValuePairs.Add("Duration", TimeSpan.Zero.TotalSeconds);
+                keyValuePairs.Add("CurrentTime", TimeSpan.Zero.TotalSeconds);
+                keyValuePairs.Add("FileName", "");
             }
-        }
-        public double GetTotalDuration()
-        {
-            if(audioFile != null)
+
+            
+
+            if (outputDevice != null)
             {
-                return audioFile.TotalTime.TotalSeconds;
+                if (outputDevice.PlaybackState == PlaybackState.Playing)
+                {
+                    keyValuePairs.Add("isPlay", true);
+                }
+                else
+                {
+                    keyValuePairs.Add("isPlay", false);
+                }
+                keyValuePairs.Add("Volume", outputDevice.Volume);
             }
             else
             {
-                return TimeSpan.Zero.TotalSeconds;
+                keyValuePairs.Add("Volume", 0.5f);
+                keyValuePairs.Add("isPlay", false);
             }
+            return keyValuePairs;
         }
         public void SetVolume(float volume)
         {

@@ -1,7 +1,9 @@
-$(function () {
-    var playerTrack = $("#player-track"),
+﻿$(function () {
+    var modalTitle = $('.modal-title'),
+        modelBody = $('.modal-body'),
+        myModal = $('#myModal'),
+        playerTrack = $("#player-track"),
         albumName = $("#album-name"),
-        trackName = $("#track-name"),
         sArea = $("#s-area"),
         seekBar = $("#seek-bar"),
         trackTime = $("#track-time"),
@@ -12,6 +14,10 @@ $(function () {
         tProgress = $("#current-time"),
         tTime = $("#track-length"),
         range = $("#range"),
+        fileForm = $(".fileForm"),
+        formFileMultiple = $("#formFileMultiple"),
+        selectMusic = $(".selectMusic"),
+        nowPlay = selectMusic.first().html(),
         seekT,
         seekLoc,
         seekBarPos,
@@ -23,76 +29,110 @@ $(function () {
         durMinutes,
         durSeconds,
         playProgress,
-        bTime,
         nTime = 0,
-        buffInterval = null,
+        currentTime = 0,
+        duration = 0, 
         tFlag = false,
-        albums = [
-            "Dawn",
-            "Me & You",
-            "Electro Boy",
-            "Home",
-            "Proxy (Original Mix)"
-        ],
-        trackNames = [
-            "Skylike - Dawn",
-            "Alex Skrindo - Me & You",
-            "Kaaze - Electro Boy",
-            "Jordan Schor - Home",
-            "Martin Garrix - Proxy"
-        ],
-        trackUrl = [
-            "https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/2.mp3",
-            "https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/1.mp3",
-            "https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/3.mp3",
-            "https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/4.mp3",
-            "https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/5.mp3"
-        ],
-        playPreviousTrackButton = $("#play-previous"),
-        playNextTrackButton = $("#play-next"),
-        currIndex = -1;
+        isPlay = false,
+        intervalId = null;
 
     range.on("change", function () {
-
-    });
-
-    $(".selectFile").on("click", function () {
         $.ajax({
             type: "POST",
-            url: "/Player/PlaySelector",
+            url: "/Player/SetVolume",
             data: {
-                fileName: $(this).html()
+                volume: $(this).val()
             },
             dataType: "json",
             success: function (response) {
-                console.log(response);
-            },
-            error: function (thrownError) {
-
             }
         });
     });
 
-    function playPause() {
-        setTimeout(function () {
-            if (audio.paused) {
-                playerTrack.addClass("active");
-                checkBuffering();
-                i.attr("class", "bi bi-pause-fill");
-                audio.play();
-            } else {
-                playerTrack.removeClass("active");
-                clearInterval(buffInterval);
-                i.attr("class", "bi bi-play-fill");
-                audio.pause();
+    selectMusic.on("click", function () {
+        currentTime = 0;
+        nowPlay = $(this).html();
+        isPlay = true;
+        albumName.html(nowPlay);
+        playerTrack.addClass("active");
+        i.attr("class", "bi bi-pause-fill");
+        playAjax();
+    });
+
+    function playAjax() {
+        $.ajax({
+            type: "POST",
+            url: "/Player/Play",
+            data: {
+                fileName: nowPlay,
+                startTime: currentTime
+            },
+            dataType: "json",
+            success: function (response) {
+                duration = response;
             }
+        });
+
+        intervalId = setInterval(function () {
+            $.ajax({
+                type: "POST",
+                url: "/Player/GetInit",
+                data: {},
+                dataType: "json",
+                success: function (response) {
+                    currentTime = response["CurrentTime"];
+                    updateCurrTime();
+                }
+            });
         }, 300);
+    }
+
+    function pauseAjax() {
+        clearInterval(intervalId); // 停止 setInterval
+        $.ajax({
+            type: "POST",
+            url: "/Player/Pause",
+            data: { },
+            dataType: "json",
+            success: function (response) {
+            }
+        });
+    }
+
+    function stopAjax() {
+        clearInterval(intervalId); // 停止 setInterval
+        $.ajax({
+            type: "POST",
+            url: "/Player/Stop",
+            data: {
+                fileName: nowPlay
+            },
+            dataType: "json",
+            success: function (response) {
+            }
+        });
+    }
+
+    function playPause() {
+        if (!isPlay) {
+            isPlay = true;
+            albumName.html(nowPlay);
+            playerTrack.addClass("active");
+            i.attr("class", "bi bi-pause-fill");
+            playAjax();
+        } else {
+            isPlay = false;
+            albumName.html("");
+            playerTrack.removeClass("active");
+            i.attr("class", "bi bi-play-fill");
+            pauseAjax();
+        }
     }
 
     function showHover(event) {
         seekBarPos = sArea.offset();
         seekT = event.clientX - seekBarPos.left;
-        seekLoc = audio.duration * (seekT / sArea.outerWidth());
+        seekLoc = duration * (seekT / sArea.outerWidth());
 
         sHover.width(seekT);
 
@@ -120,7 +160,9 @@ $(function () {
     }
 
     function playFromClickedPos() {
-        audio.currentTime = seekLoc;
+        currentTime = seekLoc;
+        pauseAjax();
+        playAjax();
         seekBar.width(seekT);
         hideHover();
     }
@@ -134,13 +176,13 @@ $(function () {
             trackTime.addClass("active");
         }
 
-        curMinutes = Math.floor(audio.currentTime / 60);
-        curSeconds = Math.floor(audio.currentTime - curMinutes * 60);
+        curMinutes = Math.floor(currentTime / 60);
+        curSeconds = Math.floor(currentTime - curMinutes * 60);
 
-        durMinutes = Math.floor(audio.duration / 60);
-        durSeconds = Math.floor(audio.duration - durMinutes * 60);
+        durMinutes = Math.floor(duration / 60);
+        durSeconds = Math.floor(duration - durMinutes * 60);
 
-        playProgress = (audio.currentTime / audio.duration) * 100;
+        playProgress = (currentTime / duration) * 100;
 
         if (curMinutes < 10) curMinutes = "0" + curMinutes;
         if (curSeconds < 10) curSeconds = "0" + curSeconds;
@@ -169,60 +211,12 @@ $(function () {
             i.attr("class", "bi bi-play-fill");
             seekBar.width(0);
             tProgress.text("00:00");
-            clearInterval(buffInterval);
-        }
-    }
-
-    function checkBuffering() {
-        clearInterval(buffInterval);
-        buffInterval = setInterval(function () {
-            bTime = new Date();
-            bTime = bTime.getTime();
-        }, 100);
-    }
-
-    function selectTrack(flag) {
-        if (flag == 0 || flag == 1) ++currIndex;
-        else --currIndex;
-
-        if (currIndex > -1) {
-            if (flag == 0) i.attr("class", "bi bi-play-fill");
-            else {
-                i.attr("class", "bi bi-pause-fill");
-            }
-
-            seekBar.width(0);
-            trackTime.removeClass("active");
-            tProgress.text("00:00");
-            tTime.text("00:00");
-
-            currAlbum = albums[currIndex];
-            currTrackName = trackNames[currIndex];
-            audio.src = trackUrl[currIndex];
-
-            nTime = 0;
-            bTime = new Date();
-            bTime = bTime.getTime();
-
-            if (flag != 0) {
-                audio.play();
-                playerTrack.addClass("active");
-                clearInterval(buffInterval);
-                checkBuffering();
-            }
-
-            albumName.text(currAlbum);
-            trackName.text(currTrackName);
-        } else {
-            if (flag == 0 || flag == 1) --currIndex;
-            else ++currIndex;
         }
     }
 
     function initPlayer() {
-        audio = new Audio();
-        selectTrack(0);
-        audio.loop = false;
+        fileForm.on("submit", checkFrom);
+
         playPauseButton.on("click", playPause);
         sArea.mousemove(function (event) {
             showHover(event);
@@ -230,14 +224,35 @@ $(function () {
 
         sArea.mouseout(hideHover);
         sArea.on("click", playFromClickedPos);
-        $(audio).on("timeupdate", updateCurrTime);
-        playPreviousTrackButton.on("click", function () {
-            selectTrack(-1);
-        });
-        playNextTrackButton.on("click", function () {
-            selectTrack(1);
+
+        $.ajax({
+            type: "POST",
+            url: "/Player/GetInit",
+            data: { },
+            dataType: "json",
+            success: function (response) {
+                if (response["isPlay"]) {
+                    console.log(response);
+                    nowPlay = response["FileName"];
+                    duration = response["Duration"];
+                    currentTime = response["CurrentTime"];
+                    range.val(response["Volume"]*100);                    
+                    playPause();
+                }                
+            }
         });
     }
 
-    initPlayer();    
+    initPlayer();
+
+    function checkFrom() {
+        if (formFileMultiple.get(0).files[0]) {
+            return true;
+        } else {
+            modalTitle.html("上傳錯誤!(Upload Error!)");
+            modelBody.html("請選擇檔案");
+            myModal.modal('show');
+            return false;
+        }        
+    }
 });

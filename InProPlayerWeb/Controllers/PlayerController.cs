@@ -11,8 +11,6 @@ namespace InProPlayerWeb.Controllers
         private readonly ApplicationDbContext _context;
         private readonly NAudioHelper _np;
 
-        //NAudioHelper np = new NAudioHelper();
-
         public PlayerController(IWebHostEnvironment hostingEnvironment, ApplicationDbContext context, NAudioHelper np)
         {
             _hostingEnvironment = hostingEnvironment;
@@ -70,10 +68,10 @@ namespace InProPlayerWeb.Controllers
                 // 上傳完成後進行相應的處理，例如返回成功訊息
                 return RedirectToAction("Index");
             }
-
-            // 如果沒有選擇檔案，返回錯誤訊息
-            ModelState.AddModelError("", "請選擇檔案");
-            return View("Index");
+            else
+            {
+                return View("Index");
+            }
         }
         private string GetUniqueFileName(string fileName)
         {
@@ -93,20 +91,22 @@ namespace InProPlayerWeb.Controllers
             return _np.Play();
         }
         [HttpPost]
-        public string Stop()
+        public string Pause()
         {
-            _np.Stop();
+            _np.Pause();
             return "success";
         }
         [HttpPost]
-        public double GetCurrentTime()
+        public string Stop()
         {
-            return _np.GetCurrentTime();
+            _np.Stop();
+            _np.startTime = TimeSpan.Zero;
+            return "success";
         }
         [HttpPost]
-        public double GetTotalDuration()
+        public Dictionary<string, object> GetInit()
         {
-            return _np.GetTotalDuration();
+            return _np.GetInit();
         }
         [HttpPost]
         public void SetVolume(float volume)

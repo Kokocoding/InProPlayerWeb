@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using InProPlayerWeb.Helper;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.Sqlite;
 
 namespace InProWeb.Controllers
 {
@@ -16,7 +18,6 @@ namespace InProWeb.Controllers
         {
             _portHelper = portHelper;
             _context = context;
-
             var configDB = _context.Configuration.ToList();
             _portHelper.PortName = configDB[0].PortName;
             _portHelper.BaudRate = configDB[0].BaudRate;
@@ -26,7 +27,6 @@ namespace InProWeb.Controllers
         {
             ViewData["areaCount"] = areaCount;
             ViewData["groupCount"] = groupCount;
-
             return View();
         }
 
