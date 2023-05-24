@@ -39,29 +39,6 @@
         isPlay = false,
         intervalId = null;
 
-    range.on("change", function () {
-        $.ajax({
-            type: "POST",
-            url: "/Player/SetVolume",
-            data: {
-                volume: $(this).val()
-            },
-            dataType: "json",
-            success: function (response) {
-            }
-        });
-    });
-
-    selectMusic.on("click", function () {
-        currentTime = 0;
-        nowPlay = $(this).html();
-        isPlay = true;
-        albumName.html(nowPlay);
-        playerTrack.addClass("active");
-        i.attr("class", "bi bi-pause-fill");
-        playAjax();
-    });
-
     function playAjax() {
         $.ajax({
             type: "POST",
@@ -226,22 +203,44 @@
     }
 
     function initPlayer() {
+        fileForm.on("submit", checkFrom);
+        playPauseButton.on("click", playPause);
+        sArea.on("click", playFromClickedPos);
+        sArea.mouseout(hideHover);
+
         playPreviousTrackButton.on("click", function () {
             selectTrack(-1);
         });
         playNextTrackButton.on("click", function () {
             selectTrack(1);
-        });
-
-        fileForm.on("submit", checkFrom);
-
-        playPauseButton.on("click", playPause);
+        });        
         sArea.mousemove(function (event) {
             showHover(event);
         });
 
-        sArea.mouseout(hideHover);
-        sArea.on("click", playFromClickedPos);
+        range.on("change", function () {
+            $.ajax({
+                type: "POST",
+                url: "/Player/SetVolume",
+                data: {
+                    volume: $(this).val()
+                },
+                dataType: "json",
+                success: function (response) {
+                }
+            });
+        });
+
+        selectMusic.on("click", function () {
+            currentTime = 0;
+            flag = 0;
+            nowPlay = $(this).html();
+            isPlay = true;
+            albumName.html(nowPlay);
+            playerTrack.addClass("active");
+            i.attr("class", "bi bi-pause-fill");
+            playAjax();
+        });
 
         $.ajax({
             type: "POST",
@@ -254,9 +253,9 @@
                     nowPlay = response["FileName"];
                     duration = response["Duration"];
                     currentTime = response["CurrentTime"];
-                    range.val(response["Volume"]*100);                    
+                    range.val(response["Volume"]*100);
                     playPause();
-                }                
+                }
             }
         });
     }
@@ -271,6 +270,6 @@
             modelBody.html("請選擇檔案");
             myModal.modal('show');
             return false;
-        }        
+        }
     }
 });

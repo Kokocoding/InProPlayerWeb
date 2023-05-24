@@ -233,6 +233,7 @@
 
         selectMusic.on("click", function () {
             currentTime = 0;
+            flag = 0;
             nowPlay = $(this).html();
             isPlay = true;
             albumName.html(nowPlay);
