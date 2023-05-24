@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using InProPlayerWeb.Helper;
+using InProPlayerWeb.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.Sqlite;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace InProWeb.Controllers
 {

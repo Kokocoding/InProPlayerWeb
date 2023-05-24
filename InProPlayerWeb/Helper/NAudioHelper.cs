@@ -66,9 +66,7 @@ namespace InProPlayerWeb.Helper
                 keyValuePairs.Add("Duration", TimeSpan.Zero.TotalSeconds);
                 keyValuePairs.Add("CurrentTime", TimeSpan.Zero.TotalSeconds);
                 keyValuePairs.Add("FileName", "");
-            }
-
-            
+            }            
 
             if (outputDevice != null)
             {

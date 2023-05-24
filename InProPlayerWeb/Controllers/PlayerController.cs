@@ -11,6 +11,7 @@ namespace InProPlayerWeb.Controllers
         private readonly ApplicationDbContext _context;
         private readonly NAudioHelper _np;
 
+        
         public PlayerController(IWebHostEnvironment hostingEnvironment, ApplicationDbContext context, NAudioHelper np)
         {
             _hostingEnvironment = hostingEnvironment;
@@ -21,12 +22,23 @@ namespace InProPlayerWeb.Controllers
         [HttpGet("Player/Index/{page?}")]
         public IActionResult Index(int page = 1)
         {
+            PageHelper ph = new PageHelper();
+            ph.page = page;            
+            ph.pageSize = 10;
+            ph.pageList = getFileFolder();
+
+            ViewBag.TotalPages  = ph.TotalPage();
+            ViewBag.CurrentPage = ph.page;
+            ViewBag.fileList    = ph.PageList();
+
+            return View();
+        }
+        public List<string> getFileFolder()
+        {
             // 資料夾的路徑
             string folderPath = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
 
-            // 建立一個清單來儲存檔案名稱
-            List<string> fileList = new List<string>();
-
+            List<string> fileList = new List<string>();// 建立一個清單來儲存檔案名稱
             // 讀取資料夾內的檔案名稱
             string[] files = Directory.GetFiles(folderPath);
             foreach (string file in files)
@@ -34,17 +46,7 @@ namespace InProPlayerWeb.Controllers
                 string fileName = Path.GetFileName(file);
                 fileList.Add(fileName);
             }
-
-            PageHelper ph = new PageHelper();
-            ph.page = page;            
-            ph.pageSize = 10;
-            ph.pageList = fileList;
-
-            ViewBag.TotalPages  = ph.TotalPage();
-            ViewBag.CurrentPage = ph.page;
-            ViewBag.fileList    = ph.PageList();
-
-            return View();
+            return fileList;
         }
 
         [HttpPost]
@@ -91,17 +93,15 @@ namespace InProPlayerWeb.Controllers
             return _np.Play();
         }
         [HttpPost]
-        public string Pause()
+        public void Pause()
         {
             _np.Pause();
-            return "success";
         }
         [HttpPost]
-        public string Stop()
+        public void Stop()
         {
             _np.Stop();
             _np.startTime = TimeSpan.Zero;
-            return "success";
         }
         [HttpPost]
         public Dictionary<string, object> GetInit()
@@ -112,6 +112,31 @@ namespace InProPlayerWeb.Controllers
         public void SetVolume(float volume)
         {
             _np.SetVolume(volume/100);
+        }
+        [HttpPost]
+        public string Track(string fileName, int Track, int flag)
+        {
+            Stop();            
+            List<string> fileList = getFileFolder();
+            string nextItem = fileList[0];
+
+            //第一首
+            if(flag < 0) return nextItem;
+
+            int index = fileList.FindIndex(item => item == fileName);
+            if ((index + Track > -1) && (index + Track < fileList.Count))
+            {
+                // 確保 index+1 不超出範圍
+                nextItem = fileList[index + Track];
+            }
+
+            //最後一首
+            if(index + Track == fileList.Count)
+            {
+                nextItem = fileList[index];
+            }
+
+            return nextItem;
         }
     }
 }

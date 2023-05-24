@@ -10,6 +10,8 @@
         insTime = $("#ins-time"),
         sHover = $("#s-hover"),
         playPauseButton = $("#play-pause-button"),
+        playPreviousTrackButton = $("#play-previous"),
+        playNextTrackButton = $("#play-next"),
         i = playPauseButton.find("i"),
         tProgress = $("#current-time"),
         tTime = $("#track-length"),
@@ -32,32 +34,10 @@
         nTime = 0,
         currentTime = 0,
         duration = 0, 
+        flag = -1,
         tFlag = false,
         isPlay = false,
         intervalId = null;
-
-    range.on("change", function () {
-        $.ajax({
-            type: "POST",
-            url: "/Player/SetVolume",
-            data: {
-                volume: $(this).val()
-            },
-            dataType: "json",
-            success: function (response) {
-            }
-        });
-    });
-
-    selectMusic.on("click", function () {
-        currentTime = 0;
-        nowPlay = $(this).html();
-        isPlay = true;
-        albumName.html(nowPlay);
-        playerTrack.addClass("active");
-        i.attr("class", "bi bi-pause-fill");
-        playAjax();
-    });
 
     function playAjax() {
         $.ajax({
@@ -93,20 +73,6 @@
             type: "POST",
             url: "/Player/Pause",
             data: { },
-            dataType: "json",
-            success: function (response) {
-            }
-        });
-    }
-
-    function stopAjax() {
-        clearInterval(intervalId); // 停止 setInterval
-        $.ajax({
-            type: "POST",
-            url: "/Player/Stop",
-            data: {
-                fileName: nowPlay
-            },
             dataType: "json",
             success: function (response) {
             }
@@ -214,16 +180,66 @@
         }
     }
 
+    function selectTrack(i) {
+        clearInterval(intervalId); // 停止 setInterval
+        isPlay = false;
+        $.ajax({
+            type: "POST",
+            url: "/Player/Track",
+            data: {
+                fileName: nowPlay,
+                Track: i,
+                flag: flag
+            },
+            dataType: "text",
+            success: function (response) {
+                flag += i;
+                if (flag <= -1) flag = 0;
+                nowPlay = response;
+                currentTime = 0;
+                playPause();
+            }
+        });
+    }
+
     function initPlayer() {
         fileForm.on("submit", checkFrom);
-
         playPauseButton.on("click", playPause);
+        sArea.on("click", playFromClickedPos);
+        sArea.mouseout(hideHover);
+
+        playPreviousTrackButton.on("click", function () {
+            selectTrack(-1);
+        });
+        playNextTrackButton.on("click", function () {
+            selectTrack(1);
+        });        
         sArea.mousemove(function (event) {
             showHover(event);
         });
 
-        sArea.mouseout(hideHover);
-        sArea.on("click", playFromClickedPos);
+        range.on("change", function () {
+            $.ajax({
+                type: "POST",
+                url: "/Player/SetVolume",
+                data: {
+                    volume: $(this).val()
+                },
+                dataType: "json",
+                success: function (response) {
+                }
+            });
+        });
+
+        selectMusic.on("click", function () {
+            currentTime = 0;
+            nowPlay = $(this).html();
+            isPlay = true;
+            albumName.html(nowPlay);
+            playerTrack.addClass("active");
+            i.attr("class", "bi bi-pause-fill");
+            playAjax();
+        });
 
         $.ajax({
             type: "POST",
@@ -236,9 +252,9 @@
                     nowPlay = response["FileName"];
                     duration = response["Duration"];
                     currentTime = response["CurrentTime"];
-                    range.val(response["Volume"]*100);                    
+                    range.val(response["Volume"]*100);
                     playPause();
-                }                
+                }
             }
         });
     }
@@ -253,6 +269,6 @@
             modelBody.html("請選擇檔案");
             myModal.modal('show');
             return false;
-        }        
+        }
     }
 });
