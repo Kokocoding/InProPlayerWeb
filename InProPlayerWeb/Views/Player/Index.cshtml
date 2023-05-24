@@ -12,10 +12,10 @@
         </div>
     </form>
 
-    <ul>
+    <ul class="list-group">
         @foreach (var fileName in ViewBag.fileList)
         {
-            <li class="selectMusic">@fileName</li>
+            <li class="selectMusic list-group-item">@fileName</li>
         }
     </ul>
     @{
@@ -42,7 +42,9 @@
 <div id="app-cover">    
     <div id="player">
         <div id="player-track">
-            <div id="album-name"></div>
+            <div id="album-name">
+                <span id="albumName-marquee"></span>
+            </div>
             <div id="track-time">
                 <div id="current-time"></div>
                 <div id="track-length"></div>

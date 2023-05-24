@@ -1,9 +1,9 @@
-﻿$(function () {
+﻿$(document).ready(function () {
     var modalTitle = $('.modal-title'),
         modelBody = $('.modal-body'),
         myModal = $('#myModal'),
         playerTrack = $("#player-track"),
-        albumName = $("#album-name"),
+        albumName = $("#albumName-marquee"),
         sArea = $("#s-area"),
         seekBar = $("#seek-bar"),
         trackTime = $("#track-time"),
@@ -183,6 +183,8 @@
     function selectTrack(i) {
         clearInterval(intervalId); // 停止 setInterval
         isPlay = false;
+        selectMusic.removeAttr("style")
+        
         $.ajax({
             type: "POST",
             url: "/Player/Track",
@@ -196,6 +198,9 @@
                 flag += i;
                 if (flag <= -1) flag = 0;
                 nowPlay = response;
+                $.each(selectMusic, function (k, v) {
+                    if ($(v).html() === response) $(v).css("background", "lightgoldenrodyellow");
+                }); 
                 currentTime = 0;
                 playPause();
             }
@@ -232,6 +237,8 @@
         });
 
         selectMusic.on("click", function () {
+            selectMusic.removeAttr("style")
+            $(this).css("background", "lightgoldenrodyellow");
             currentTime = 0;
             flag = 0;
             nowPlay = $(this).html();
@@ -249,7 +256,7 @@
             dataType: "json",
             success: function (response) {
                 if (response["isPlay"]) {
-                    console.log(response);
+                    flag = 0;
                     nowPlay = response["FileName"];
                     duration = response["Duration"];
                     currentTime = response["CurrentTime"];
