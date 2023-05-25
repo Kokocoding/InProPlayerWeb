@@ -52,19 +52,7 @@
                 duration = response;
             }
         });
-
-        intervalId = setInterval(function () {
-            $.ajax({
-                type: "POST",
-                url: "/Player/GetInit",
-                data: {},
-                dataType: "json",
-                success: function (response) {
-                    currentTime = response["CurrentTime"];
-                    updateCurrTime();
-                }
-            });
-        }, 300);
+        updateInterval();
     }
 
     function pauseAjax() {
@@ -93,6 +81,25 @@
             i.attr("class", "bi bi-play-fill");
             pauseAjax();
         }
+    }
+
+    function updateInterval() {
+        intervalId = setInterval(function () {
+            $.ajax({
+                type: "POST",
+                url: "/Player/GetInit",
+                data: {},
+                dataType: "json",
+                success: function (response) {
+                    currentTime = response["CurrentTime"];
+                    updateCurrTime();
+                    if (!response["isPlay"]) {
+                        clearInterval(intervalId); // 停止 setInterval
+                        updateCurrTime();
+                    }
+                }
+            });
+        }, 500);
     }
 
     function showHover(event) {
@@ -173,7 +180,12 @@
 
         seekBar.width(playProgress + "%");
 
-        if (playProgress == 100) {
+        if (playProgress >= 100) {
+            clearInterval(intervalId); // 停止 setInterval
+            currentTime = 0;
+            isPlay = false;
+            albumName.html("");
+            playerTrack.removeClass("active");
             i.attr("class", "bi bi-play-fill");
             seekBar.width(0);
             tProgress.text("00:00");
@@ -260,8 +272,13 @@
                     nowPlay = response["FileName"];
                     duration = response["Duration"];
                     currentTime = response["CurrentTime"];
-                    range.val(response["Volume"]*100);
-                    playPause();
+                    range.val(response["Volume"] * 100);
+
+                    isPlay = response["isPlay"];
+                    albumName.html(nowPlay);
+                    playerTrack.addClass("active");
+                    i.attr("class", "bi bi-pause-fill");
+                    updateInterval();
                 }
             }
         });

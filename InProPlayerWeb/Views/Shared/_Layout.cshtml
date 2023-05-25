@@ -4,121 +4,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>@ViewData["Title"] - InProWeb</title>
-    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/lib/bootstrap/dist/css/bootstrap-grid.min.css" rel="stylesheet" />
-    <link href="~/lib/bootstrap/dist/css/bootstrap-reboot.min.css" rel="stylesheet" />
-    <link href="~/lib/bootstrap/dist/css/bootstrap-utilities.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="~/lib/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.esm.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
 </head>
 <body>
     <header>
-        <nav class="bg-dark navbar">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/home/index">
                     <img src="~/images/logo.png" width="100" height="25" />
                 </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link " aria-current="page" href="/Home/Index">分區控制</a>
+                        <a class="nav-link " href="/Player/Index">撥放器</a>
+                        <a class="nav-link " href="#">Pricing</a>
+                    </div>
+                </div>
             </div>
         </nav>
     </header>
 
     <div class="container-fluid">
-        <div class="row flex-nowrap">
-            <div class="col-auto col-md-2 col-xl-2 px-sm-2 px-0 bg-dark">
-                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                        <li class="nav-item">
-                            <a href="/Home/Index" class="nav-link align-middle px-0">
-                                <i class="fs-4 bi-house"></i><span class="text-white ms-1 d-none d-sm-inline">分區控制</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/Player/Index" class="nav-link align-middle px-0">
-                                <i class="fs-4 bi-speedometer2"></i> <span class="text-white ms-1 d-none d-sm-inline">撥放器</span>
-                            </a>
-                        </li>
-@*                        <li>
-                            <a href="/Player/Index" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">撥放器</span>
-                            </a>
-                            <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                                <li class="w-100">
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                                <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span>
-                            </a>
-                            <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                                <li class="w-100">
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span>
-                            </a>
-                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-                                <li class="w-100">
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
-                                </li>
-                                <li>
-                                    <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span>
-                            </a>
-                        </li>*@
-                    </ul>
-                    <hr>
-                    <div class="dropdown pb-4">
-                        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                            <span class="d-none d-sm-inline mx-1">loser</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                            <li><a class="dropdown-item" href="#">New project...</a></li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Sign out</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col py-3">
-                <main role="main" class="main pb-3">
+        <div class="row">
+            <div class="col-auto col-md-12 col-xl-12 px-sm-12">
+                <main role="main" class="container-fluid main pb-3">
                     @RenderBody()
                 </main>
             </div>
@@ -131,7 +49,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="ModalLabel">@ViewData["ErrorTitle"]</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick="$('#myModal').modal('hide');">
+                    <button type="button" class="btn btn-outline-secondary close" data-dismiss="modal" aria-label="Close" onClick="$('#myModal').modal('hide');">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -139,17 +57,17 @@
                     @ViewData["ErrorBody"]
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onClick="$('#myModal').modal('hide');">關閉</button>
+                    <button type="button" class="btn btn-dark" data-dismiss="modal" onClick="$('#myModal').modal('hide');">關閉</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer fixed-bottom text-muted bg-dark">
         <div class="container">
             &copy; 2023 - InProWeb -
         </div>
     </footer>
-    @await RenderSectionAsync("Scripts", required: false)
+    @*@await RenderSectionAsync("Scripts", required: false)*@
 </body>
 </html>

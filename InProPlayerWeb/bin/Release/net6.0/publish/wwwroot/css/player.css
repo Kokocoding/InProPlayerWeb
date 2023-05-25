@@ -41,9 +41,47 @@ body {
 }
 
 #album-name {
+    width: 100%; /* 設定容器的寬度 */
+    white-space: nowrap; /*禁止文字換行 */
+    overflow: hidden; /*隱藏超出容器範圍的內容 */
+    text-overflow: ellipsis; /*超出範圍時以省略符號 (...) 代替 */
     color: #54576f;
     font-size: 17px;
     font-weight: bold;
+    height: 24px; /* 指定父節點的高度 */
+    position: relative;
+}
+
+#albumName-marquee {
+    display: inline-block;
+    animation: marquee 10s linear infinite;
+    position: absolute;
+}
+
+@keyframes marquee {
+    0% {
+        left: 100%;
+        transform: translateX(0);
+    }
+
+    100% {
+        left: 0;
+        transform: translateX(-100%);
+    }
+/*  0% {
+        left: 0;
+        transform: translateX(0);
+    }
+
+    50% {
+        left: 100%;
+        transform: translateX(-100%);
+    }
+
+    100% {
+        left: 0;
+        transform: translateX(0);
+    }*/
 }
 
 #track-name {
@@ -214,16 +252,19 @@ body {
 }
 
 #playerList {
-    width: 75%;
+    margin-left: 15px;
+    width: 98%;
 }
 
 #playerList ul {
+    margin-bottom: 10px;
     padding-left: 5px;
-    width: 75%;
+    width: 98%;
     overflow: hidden; /* 超過寬度時隱藏內容 */
 }
 
-#playerList li {    
+#playerList li {
+    background-color: #ffeff5;
     white-space: nowrap; /* 防止文字換行 */
     overflow: hidden; /* 超過寬度時隱藏內容 */
     text-overflow: ellipsis; /* 超過寬度時顯示省略符號 */

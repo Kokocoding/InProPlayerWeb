@@ -48,27 +48,40 @@ body {
     color: #54576f;
     font-size: 17px;
     font-weight: bold;
+    height: 24px; /* 指定父節點的高度 */
     position: relative;
 }
 
 #albumName-marquee {
     display: inline-block;
-    animation: marquee 20s linear infinite;
-    position: relative;
+    animation: marquee 10s linear infinite;
+    position: absolute;
 }
 
 @keyframes marquee {
     0% {
-        transform: translateX(100%);
-    }
-
-    50%{
-        transform: translateX(0%);
+        left: 100%;
+        transform: translateX(0);
     }
 
     100% {
+        left: 0;
         transform: translateX(-100%);
     }
+/*  0% {
+        left: 0;
+        transform: translateX(0);
+    }
+
+    50% {
+        left: 100%;
+        transform: translateX(-100%);
+    }
+
+    100% {
+        left: 0;
+        transform: translateX(0);
+    }*/
 }
 
 #track-name {
@@ -239,7 +252,6 @@ body {
 }
 
 #playerList {
-    margin-left: 15px;
     width: 98%;
 }
 
@@ -259,4 +271,8 @@ body {
 
 #range {
     width: 100%;
+}
+
+.selectMusic {
+    cursor: pointer;
 }

@@ -4,8 +4,8 @@ namespace InProPlayerWeb.Helper
 {
     public class NAudioHelper 
     {
-        private WaveOutEvent outputDevice;
-        private AudioFileReader audioFile;
+        private WaveOutEvent? outputDevice;
+        private AudioFileReader? audioFile;
 
         public string audioFilePath = "";
         public TimeSpan startTime = TimeSpan.Zero;
@@ -18,6 +18,7 @@ namespace InProPlayerWeb.Helper
             audioFile = new AudioFileReader(audioFilePath);
             audioFile.CurrentTime = startTime; // 设置播放的起始时间
             outputDevice = new WaveOutEvent();
+            outputDevice.Volume = Volume;
             outputDevice.Init(audioFile);
             outputDevice.Play();
             return (double)GetInit()["Duration"];
@@ -76,6 +77,7 @@ namespace InProPlayerWeb.Helper
                 }
                 else
                 {
+                    if (audioFile != null) keyValuePairs["CurrentTime"] = audioFile.TotalTime.TotalSeconds;
                     keyValuePairs.Add("isPlay", false);
                 }
                 keyValuePairs.Add("Volume", outputDevice.Volume);
@@ -89,7 +91,8 @@ namespace InProPlayerWeb.Helper
         }
         public void SetVolume(float volume)
         {
-            outputDevice.Volume = volume;
+            Volume = volume;
+            if(outputDevice != null) outputDevice.Volume = Volume;
         }
     }
 }
