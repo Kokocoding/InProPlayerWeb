@@ -252,7 +252,6 @@ body {
 }
 
 #playerList {
-    margin-left: 15px;
     width: 98%;
 }
 
@@ -272,4 +271,8 @@ body {
 
 #range {
     width: 100%;
+}
+
+.selectMusic {
+    cursor: pointer;
 }

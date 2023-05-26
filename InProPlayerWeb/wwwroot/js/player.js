@@ -274,6 +274,10 @@
                     currentTime = response["CurrentTime"];
                     range.val(response["Volume"] * 100);
 
+                    $.each(selectMusic, function (k, v) {
+                        if ($(v).html() === nowPlay) $(v).css("background", "lightgoldenrodyellow");
+                    }); 
+
                     isPlay = response["isPlay"];
                     albumName.html(nowPlay);
                     playerTrack.addClass("active");

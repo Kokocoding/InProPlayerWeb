@@ -1120,12 +1120,12 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\end of a life - Calliope Mori (Original Song).mp3))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\King Gnu - 白日_gzpy.mp3))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\King Gnu - 白日.mp3))">
       <SourceType>Package</SourceType>
       <SourceId>InProPlayerWeb</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/InProPlayerWeb</BasePath>
-      <RelativePath>uploads/King Gnu - 白日_gzpy.mp3</RelativePath>
+      <RelativePath>uploads/King Gnu - 白日.mp3</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -1134,14 +1134,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\King Gnu - 白日_gzpy.mp3))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\King Gnu - 白日.mp3))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\KING _ Gawr Gura x Calliope Mori (Cover)_rxgc.mp3))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\KING _ Gawr Gura x Calliope Mori (Cover).mp3))">
       <SourceType>Package</SourceType>
       <SourceId>InProPlayerWeb</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/InProPlayerWeb</BasePath>
-      <RelativePath>uploads/KING _ Gawr Gura x Calliope Mori (Cover)_rxgc.mp3</RelativePath>
+      <RelativePath>uploads/KING _ Gawr Gura x Calliope Mori (Cover).mp3</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -1150,14 +1150,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\KING _ Gawr Gura x Calliope Mori (Cover)_rxgc.mp3))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\KING _ Gawr Gura x Calliope Mori (Cover).mp3))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\SEKAI NO OWARI「Habit」_ze3r.mp3))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\SEKAI NO OWARI「Habit」.mp3))">
       <SourceType>Package</SourceType>
       <SourceId>InProPlayerWeb</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/InProPlayerWeb</BasePath>
-      <RelativePath>uploads/SEKAI NO OWARI「Habit」_ze3r.mp3</RelativePath>
+      <RelativePath>uploads/SEKAI NO OWARI「Habit」.mp3</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -1166,7 +1166,7 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\SEKAI NO OWARI「Habit」_ze3r.mp3))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\SEKAI NO OWARI「Habit」.mp3))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\YOASOBI「怪物」Official Music Video.mp3))">
       <SourceType>Package</SourceType>
@@ -1200,12 +1200,12 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\YOASOBIアイドル Official Music Video.mp3))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\Yukopi - 強風オールバック (feat.歌愛ユキ)_cy40.mp3))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\Yukopi - 強風オールバック (feat.歌愛ユキ).mp3))">
       <SourceType>Package</SourceType>
       <SourceId>InProPlayerWeb</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/InProPlayerWeb</BasePath>
-      <RelativePath>uploads/Yukopi - 強風オールバック (feat.歌愛ユキ)_cy40.mp3</RelativePath>
+      <RelativePath>uploads/Yukopi - 強風オールバック (feat.歌愛ユキ).mp3</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -1214,7 +1214,7 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\Yukopi - 強風オールバック (feat.歌愛ユキ)_cy40.mp3))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\Yukopi - 強風オールバック (feat.歌愛ユキ).mp3))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\[Hololive] 至上主義アドトラック Sijoushugi Adtruck (Flare, Kanata, Matsuri, Nene, Mio).mp3))">
       <SourceType>Package</SourceType>
@@ -1248,12 +1248,12 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\【Ado】踊.mp3))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\サカナクション _ 新宝島　-Music Video_o5po.mp3))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\サカナクション _ 新宝島　-Music Video.mp3))">
       <SourceType>Package</SourceType>
       <SourceId>InProPlayerWeb</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/InProPlayerWeb</BasePath>
-      <RelativePath>uploads/サカナクション _ 新宝島　-Music Video_o5po.mp3</RelativePath>
+      <RelativePath>uploads/サカナクション _ 新宝島　-Music Video.mp3</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -1262,14 +1262,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\サカナクション _ 新宝島　-Music Video_o5po.mp3))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\サカナクション _ 新宝島　-Music Video.mp3))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\卓義峯 Yifeng Zhuo - 再見煙火 Goodbye Firework【豐華唱片official 官方MV】_0tjw.mp3))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\卓義峯 Yifeng Zhuo - 再見煙火 Goodbye Firework【豐華唱片official 官方MV】.mp3))">
       <SourceType>Package</SourceType>
       <SourceId>InProPlayerWeb</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/InProPlayerWeb</BasePath>
-      <RelativePath>uploads/卓義峯 Yifeng Zhuo - 再見煙火 Goodbye Firework【豐華唱片official 官方MV】_0tjw.mp3</RelativePath>
+      <RelativePath>uploads/卓義峯 Yifeng Zhuo - 再見煙火 Goodbye Firework【豐華唱片official 官方MV】.mp3</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -1278,7 +1278,7 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\卓義峯 Yifeng Zhuo - 再見煙火 Goodbye Firework【豐華唱片official 官方MV】_0tjw.mp3))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\卓義峯 Yifeng Zhuo - 再見煙火 Goodbye Firework【豐華唱片official 官方MV】.mp3))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\原子邦妮 Astro Bunny 【在名為未來的波浪裡】Official Music Video_slbb.mp3))">
       <SourceType>Package</SourceType>

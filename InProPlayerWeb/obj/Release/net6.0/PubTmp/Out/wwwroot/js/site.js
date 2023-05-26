@@ -1,14 +1,17 @@
 ﻿$(document).ready(function () {
-    /* Home Js */
-    $(".mBtn").on("click", function () {
+    var trunBtn = $(".turnBtn");
+
+    trunBtn.on("click", function () {
         var onoff = "";
         if ($(this).hasClass("bi-toggle2-off")) {
-            $(this).removeClass("bi-toggle2-off").addClass("bi-toggle2-on").html("開啟");
+            $(this).removeClass("bi-toggle2-off").removeClass("btn-primary").addClass("btn-outline-primary").addClass("bi-toggle2-on").html("&nbsp;開啟");
             onoff = true;
         } else if ($(this).hasClass("bi-toggle2-on")) {
-            $(this).removeClass("bi-toggle2-on").addClass("bi-toggle2-off").html("關閉");
+            $(this).removeClass("bi-toggle2-on").removeClass("btn-outline-primary").addClass("btn-primary").addClass("bi-toggle2-off").html("&nbsp;關閉");
             onoff = false;
         }
+
+        $(this).blur();
 
         $.ajax({
             type: "POST",
@@ -27,8 +30,4 @@
             }
         });
     });
-
-    /* Player Js */
-
-
 });
