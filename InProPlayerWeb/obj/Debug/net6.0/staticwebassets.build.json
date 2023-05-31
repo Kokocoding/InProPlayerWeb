@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NWeMlYd+yCQA2JQERuKd4vtq6332HpJtHJO2e3q5AyU=",
+  "Hash": "kv4P47Z4ZkzBTyUjyLvUSDR4AWiF4mIRFvCm0zhTeps=",
   "Source": "InProPlayerWeb",
   "BasePath": "_content/InProPlayerWeb",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\InProPlayerWeb.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\css\\group.css",
+      "SourceId": "InProPlayerWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\",
+      "BasePath": "_content/InProPlayerWeb",
+      "RelativePath": "css/group.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\group.css"
     },
     {
       "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\css\\player.css",
@@ -117,6 +134,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\logo.png"
+    },
+    {
+      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\js\\group.js",
+      "SourceId": "InProPlayerWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\",
+      "BasePath": "_content/InProPlayerWeb",
+      "RelativePath": "js/group.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\group.js"
     },
     {
       "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\js\\player.js",

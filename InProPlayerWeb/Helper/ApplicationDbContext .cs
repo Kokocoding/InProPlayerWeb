@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using InProPlayerWeb.Models;
-using Microsoft.Extensions.Configuration;
 
 namespace InProPlayerWeb.Helper
 {
@@ -12,5 +11,7 @@ namespace InProPlayerWeb.Helper
         }
 
         public DbSet<Configuration> Configuration { get; set; }
+        public DbSet<Group> Group { get; set; }
+
     }
 }

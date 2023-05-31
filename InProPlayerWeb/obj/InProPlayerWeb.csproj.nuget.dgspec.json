@@ -57,6 +57,10 @@
               "target": "Package",
               "version": "[2.1.0, )"
             },
+            "Quartz": {
+              "target": "Package",
+              "version": "[3.6.2, )"
+            },
             "System.IO.Ports": {
               "target": "Package",
               "version": "[7.0.0, )"

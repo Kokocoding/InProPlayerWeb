@@ -13,8 +13,6 @@ namespace InProPlayerWeb.Helper
 
         public double Play()
         {
-            Stop(); // 先停止正在播放的音頻（如果有）
-
             audioFile = new AudioFileReader(audioFilePath);
             audioFile.CurrentTime = startTime; // 设置播放的起始时间
             outputDevice = new WaveOutEvent();
@@ -77,7 +75,7 @@ namespace InProPlayerWeb.Helper
                 }
                 else
                 {
-                    if (audioFile != null) keyValuePairs["CurrentTime"] = audioFile.TotalTime.TotalSeconds;
+                    //if (audioFile != null) keyValuePairs["CurrentTime"] = audioFile.TotalTime.TotalSeconds;
                     keyValuePairs.Add("isPlay", false);
                 }
                 keyValuePairs.Add("Volume", outputDevice.Volume);

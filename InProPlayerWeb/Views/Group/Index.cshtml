@@ -1,0 +1,57 @@
+﻿@using InProPlayerWeb.Helper;
+@{
+    var currentPage = ViewBag.CurrentPage;
+    var totalPages = ViewBag.TotalPages;
+    string search = "";
+    if (!String.IsNullOrEmpty(ViewBag.Search))
+    {
+        search = "?search=" + ViewBag.Search;
+    }
+    int startPages = 1;
+}
+
+<link href="~/css/group.css" rel="stylesheet" />
+<h3>@ViewData["Title"]</h3>
+<div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group" role="group" aria-label="Basic">
+        <button type="button" class="btn btn-outline-success append">新增</button>
+        <button type="button" class="btn btn-outline-success edit">修改</button>
+        <button type="button" class="btn btn-outline-danger delete">刪除</button>
+    </div>
+    <div class="input-group">
+        <input type="text" class="form-control" aria-label="search" name="search" value="@ViewBag.Search">
+        <button type="button" class="btn btn-primary input-group-text" id="searchBtn">搜尋</button>
+    </div>
+</div>
+
+<div class="table">
+    <div class="table-row">
+        <div class="table-cell" style="width:20%">編號</div>
+        <div class="table-cell">名稱</div>
+    </div>
+    @foreach (var data in ViewBag.DataList)
+    {
+        <div class="table-row" data-id="@data.id">
+            <div class="table-cell">@data.id</div>
+            <div class="table-cell">@data.title</div>
+        </div>
+    }
+</div>
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" href="/Group/Index/@startPages@search">&laquo;</a>
+        </li>
+        @foreach (var i in PageHelper<Group>.GetDisplayedPages(currentPage, totalPages))
+        {
+            <li class="page-item @(i == currentPage ? "active" : "")">
+                <a class="page-link" href="/Group/Index/@i@search">@i</a>
+            </li>
+        }
+        <li class="page-item">
+            <a class="page-link" href="/Group/Index/@totalPages@search">&raquo;</a>
+        </li>
+    </ul>
+</nav>
+
+<script src="~/js/group.js"></script>

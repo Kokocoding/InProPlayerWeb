@@ -1,7 +1,13 @@
 ﻿@using System.Linq;
 @using InProPlayerWeb.Helper;
 
+@{
+    var currentPage = ViewBag.CurrentPage;
+    var totalPages = ViewBag.TotalPages;
+}
+
 <link href="~/css/player.css" rel="stylesheet" />
+<h3>@ViewData["Title"]</h3>
 <div id="playerList">
     <form class="fileForm row" method="post" enctype="multipart/form-data" action="/Player/Upload">
         <div class="col-auto">
@@ -12,22 +18,20 @@
         </div>
     </form>
 
-    <ul class="list-group">
-        @foreach (var fileName in ViewBag.fileList)
+    <div class="table">
+        @foreach (var data in ViewBag.DataList)
         {
-            <li class="selectMusic list-group-item">@fileName</li>
+            <div class="table-row">
+                <div class="table-cell selectMusic">@data</div>
+            </div>
         }
-    </ul>
-    @{
-        var currentPage = ViewBag.CurrentPage;
-        var totalPages = ViewBag.TotalPages;
-    }
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
+    </div>
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
             <li class="page-item">
                 <a class="page-link" href="/Player/Index/1">&laquo;</a>
             </li>
-            @foreach (var i in PageHelper.GetDisplayedPages(currentPage, totalPages))
+            @foreach (var i in PageHelper<string>.GetDisplayedPages(currentPage, totalPages))
             {
                 <li class="page-item @(i == currentPage ? "active" : "")">
                     <a class ="page-link" href="/Player/Index/@i">@i</a>
@@ -42,17 +46,17 @@
 <div id="app-cover">    
     <div id="player">
         <div id="player-track">
-            <div id="album-name">
-                <span id="albumName-marquee"></span>
+            <div id="s-area">
+                <div id="ins-time"></div>
+                <div id="s-hover"></div>
+                <div id="seek-bar"></div>
             </div>
             <div id="track-time">
                 <div id="current-time"></div>
                 <div id="track-length"></div>
             </div>
-            <div id="s-area">
-                <div id="ins-time"></div>
-                <div id="s-hover"></div>
-                <div id="seek-bar"></div>
+            <div id="album-name">
+                <span id="albumName-marquee"></span>
             </div>
         </div>
         <div id="player-content">

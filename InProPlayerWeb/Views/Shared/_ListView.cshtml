@@ -1,0 +1,256 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@using System.Diagnostics;
+@using prjMicLib;
+@using Newtonsoft.Json.Linq;
+@using prjCCSchool.Models;
+
+<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    BaseController bc = Html.ViewContext.Controller as BaseController;
+    int PageCur = bc.PageCur;
+    string actName = bc.RouteData.Values["action"].ToString();
+    if (actName == "CallBack" && Model.Count < 1) {
+        @ViewFunc.ShowMessage(ViewBag.Title, "指定條件，查無資料!!")
+    }
+}
+
+@if (TempData["CommMsg"] != null) {
+    string msg = (string)TempData["CommMsg"];
+    @ViewFunc.ShowMessage(ViewBag.Title, msg)
+    //TempData.Remove("CommMsg");
+}
+
+<div class="card">
+    @using (Html.BeginForm("Index", null, FormMethod.Post, new { id = "ListControl" })) {
+    @Html.Hidden("page", PageCur)
+    @Html.Hidden("sortMark", (string)ViewBag.opList["sortMark"])
+    @Html.Hidden("curOrderField", (string)ViewBag.opList["curOrderField"])
+    @Html.Hidden("cname", Request["cname"] != null ? Request["cname"] : "")
+
+    string advFilter = ViewBag.opList["advFilter"] != null ? ViewBag.opList["advFilter"] : "";
+    if (Request["advFilter"] != null) { advFilter = Request["advFilter"]; }
+    @Html.Hidden("advFilter", advFilter);
+
+    string defFilter = ViewBag.opList["defFilter"] != null ? ViewBag.opList["defFilter"] : "";
+    if (Request["defFilter"] != null) { defFilter = Request["defFilter"]; }
+    @Html.Hidden("defFilter", defFilter);
+
+    //::for Detal List -----------
+    @Html.Hidden("id", "")
+    @Html.Hidden("tabCur", Request["tabCur"])
+
+    <div id="toolbar">
+        @{
+        bool fg = ViewBag.opList["NewBTN"] ?? true; if (!fg) { fg = ViewBag.opList["NewBTN"]; }
+        bool fg1 = ViewBag.opList["DetailsBTN"] ?? true; if (!fg1) { fg1 = ViewBag.opList["DetailsBTN"]; }
+        bool fg2 = ViewBag.opList["EditBTN"] ?? true; if (!fg2) { fg2 = ViewBag.opList["EditBTN"]; }
+        bool fg3 = ViewBag.opList["DeleteBTN"] ?? true; if (!fg3) { fg3 = ViewBag.opList["DeleteBTN"]; }
+        bool fgAll = fg1 || fg2 || fg3;
+        if (fg)
+        {
+        <button id="newBtn" type="button" class="btn btn-primary">
+            <i class="fa fa-plus-square"></i>@Html.ActionLink("新增", "Create", null, new { style = "color:#fff;font-weight:bold" })
+        </button>
+        }
+        }
+        @if (ViewBag.opList["Nosearch"] == null)
+        {
+        <input type="search" id="keywd" name="keywd" placeholder="搜尋" value="@ViewBag.opList[" keywd"]" class="form-control form-control-sm" />
+        <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+        }
+        @{
+        //:gen Filters  ---------------------------------------------------------------------------------
+        if (ViewBag.opList["filters"] != null)
+        {
+        foreach (var item in ViewBag.opList["filters"])
+        {
+        string fltName = item.Name;
+        var fltValue = item.Value;
+        string dfKey = "";        //過濾器 預設值
+        string addAll = "";
+        bool isHide = false;    //過濾器 是否隱藏
+        string hideClass = "";
+        if (ViewBag.opList["filterOption"] != null && ViewBag.opList["filterOption"][fltName] != null)
+        {
+        dfKey = ViewBag.opList["filterOption"][fltName][0];      //default value
+        isHide = ViewBag.opList["filterOption"][fltName][1];    //is Hide
+        addAll = ViewBag.opList["filterOption"][fltName].Count > 2 ? ViewBag.opList["filterOption"][fltName][2] : "";    //add All Option
+        if (isHide) { hideClass = "hidden"; }
+        }
+
+        string fltType = "Select"; //filterType  default
+        if (ViewBag.opList["filterType"] != null && ViewBag.opList["filterType"][fltName] != null)
+        {
+        fltType = ViewBag.opList["filterType"][fltName];
+        switch (fltType)
+        {
+        case "SelSys":
+        fltValue = MicLib.getSysInfo((string)fltValue);
+        if (addAll != "") { fltValue.AddFirst(new JProperty("", addAll)); }
+        break;
+        case "SelIni":
+        string[] ab = Convert.ToString(fltValue).Split('.');
+        fltValue = MicLib.GetIniValue(ab[1], ab[0]);
+        if (addAll != "") { fltValue.AddFirst(new JProperty("", addAll)); }
+        break;
+        case "SelDB":
+        fltValue = MicLib.getDBInfo((string)fltValue);
+        if (addAll != "") { fltValue.AddFirst(new JProperty("", addAll)); }
+        break;
+        }
+        }
+
+        switch (fltType)
+        {
+        case "Month":
+        if (Request[fltName] != null)
+        {
+        fltValue["value"] = Request[fltName];
+        }
+        else if (dfKey != "") { fltValue["value"] = dfKey; }
+        @Html.Raw(MicLib.genInput(MicLib.etraInp, fltName, fltValue))
+        break;
+        case "DateRange":
+        if (Request[fltName] != null)
+        {
+        fltValue["value"] = Request[fltName];
+        }
+        else if (dfKey != "") { fltValue["value"] = dfKey; }
+        @Html.Raw(MicLib.genDateRgInput(MicLib.dateRgInp, fltName, fltValue))
+        break;
+        case "Session":
+        string key = fltValue;
+        <select id="@fltName" name="@fltName" class="form-control filter @hideClass" onchange="this.form.submit()">
+            <option value="@Session[key]" selected>@Session[key]</option>
+        </select>
+        break;
+        case "SelSys":
+        case "SelIni":
+        case "SelDB":
+        case "Select":
+        <select id="@fltName" name="@fltName" class="form-control filter @hideClass" onchange="this.form.submit()">
+            @{
+            bool flag1 = false;
+            string selectedStr;
+            if (Request[fltName] != null)
+            {  //傳值優先
+            foreach (var op in fltValue)
+            {
+            if (Request[fltName] == op.Name && !flag1)
+            {
+            selectedStr = "selected"; flag1 = true;
+            }
+            else { selectedStr = ""; }
+
+            if (op.Name == "@fid")
+            {
+            <option value="@Request[fltName]">@Request[fltName]</option>
+            flag1 = true;
+            }
+            else
+            {
+            <option value="@op.Name" @selectedStr>@op.Value</option>
+            }
+            }
+            }
+            if (!flag1)
+            {  //其次預設
+            foreach (var op in fltValue)
+            {
+            if (dfKey == op.Name) { selectedStr = "selected"; } else { selectedStr = ""; }
+            <option value='@op.Name' @selectedStr>@op.Value</option>
+            }
+            }
+            }
+        </select>
+        break;
+        }
+        }
+        }
+        //:gen extraButtons ----------------------------------------------------------------------------
+        if (ViewBag.opList["extraButton"] != null)
+        {
+        foreach (var item in ViewBag.opList["extraButton"])
+        {
+        if (ViewBag.Permit != null && item[4] != null)
+        { //處理按鈕權限
+        item[1] = !Convert.ToBoolean((int)ViewBag.Permit & (int)item[4]);
+        }
+        if (ViewBag.opList["Nosearch"] != null && item[3] == "queryAdv") { item[2] = false; }   //查詢權限
+        @Html.Raw(MicLib.genButton(MicLib.etraBtn, item));
+        }
+        }
+
+        //:gen goBtn ------------------------------------------------------------------------------------
+        if (ViewBag.opList["filterOption"] != null && ViewBag.opList["filterOption"]["goBtn"] != null)
+        {
+        @Html.Raw(MicLib.genButton(MicLib.goBtn, ViewBag.opList["filterOption"]["goBtn"]));
+        }
+        }
+    </div>
+
+    <table class="table">
+        <tr>
+            @foreach (var st in ViewBag.fdInfo) {   //::genHeader ----------------------------------------
+            string fname = st.Name;
+            string classstr = st.Value[2] == true ? "sortable" : "";
+            if (classstr != "") {
+            classstr += (ViewBag.opList["curOrderField"] != fname ? " sorting_all" : (ViewBag.opList["sortMark"] == "ASC" ? " sorting_asc" : " sorting_desc"));
+            }
+            <th data-id="@fname" class="@classstr">@st.Value[0]</th>
+            }
+            @if (fgAll) {
+            <th width="0">操作</th>
+            }
+        </tr>
+
+        @foreach (var item in Model) {
+        string idstr;
+        if (ViewBag.opList["pkKey"] != null) {
+        List
+        <string>
+            tempLst = new List<string>
+                ();
+                foreach (string k in ViewBag.opList["pkKey"]) {
+                tempLst.Add(item.GetType().GetProperty(k).GetValue(item).Trim());
+                }
+                idstr = string.Join(",", tempLst);
+                } else {
+                idstr = Convert.ToString(item.GetType().GetProperties()[0].GetValue(item)).Trim();
+                }
+
+                string selected = ViewBag.SelID != null ? (ViewBag.SelID == idstr ? "ListRow selected" : "ListRow") : "ListRow";
+                <tr class="@selected" data-id="@idstr">
+                    @foreach (var st in ViewBag.fdInfo) {
+                    <td>@Html.Raw(MicLib.getListDOM(item, st, ViewBag.View))</td>
+                    }
+                    @if (fgAll) {
+                    <td>
+                        @{
+                        if (fg1) {@Html.ActionLink(" ", "Details", new { id = idstr }, new { @class = "btn btn-primary fa fa-list", @title = "詳細" }) }
+                        if (fg2) {@Html.ActionLink(" ", "Edit", new { id = idstr }, new { @class = "btn btn-success fa fa-edit", @title = "修改" }) }
+                        if (fg3) {@Html.ActionLink(" ", "Delete", new { id = idstr }, new { @class = "btn btn-danger fa fa-trash-o", @title = "刪除" }) }
+                        }
+                    </td>
+                    }
+                </tr>
+                }
+    </table>
+
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }),
+    new PagedListRenderOptions {
+    DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+    DisplayLinkToLastPage = PagedListDisplayMode.Always,
+    DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+    DisplayLinkToNextPage = PagedListDisplayMode.Always,
+    DisplayLinkToIndividualPages = true,
+    DisplayPageCountAndCurrentLocation = true,
+    PageCountAndCurrentLocationFormat = "頁面：{0}/{1}",
+    DisplayItemSliceAndTotal = true,
+    ItemSliceAndTotalFormat = "總筆數：{2}"
+    }
+    )
+    }
+</div>

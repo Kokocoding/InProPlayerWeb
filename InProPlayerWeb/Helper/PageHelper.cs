@@ -1,17 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
-namespace InProPlayerWeb.Helper
+﻿namespace InProPlayerWeb.Helper
 {
-    public class PageHelper
+    public class PageHelper<T> : List<T>
     {
         public int page = 1;
         public int pageSize = 10;
-        public List<string> pageList = new List<string>();
+        public List<T> pageList = new List<T>();
 
         public PageHelper()
         {
-            
         }
         
         public int TotalPage()
@@ -19,7 +15,7 @@ namespace InProPlayerWeb.Helper
             return (int)Math.Ceiling((double)pageList.Count / pageSize);
         }
 
-        public List<string> PageList()
+        public List<T> PageList()
         {
             return pageList
                    .Skip((page - 1) * pageSize)

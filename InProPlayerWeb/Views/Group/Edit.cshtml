@@ -1,0 +1,10 @@
+﻿@model InProPlayerWeb.Models.Group
+
+<form method="post" action="/Group/Edit">
+    <input type="hidden" class="form-control" name="id" value="@Model.id">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">群組名稱</label>
+        <input type="text" class="form-control" name="title" value="@Model.title">
+    </div>
+    <button type="submit" class="btn btn-primary">送出</button>
+</form>

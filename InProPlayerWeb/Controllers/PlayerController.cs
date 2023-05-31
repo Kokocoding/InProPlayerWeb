@@ -1,7 +1,5 @@
 ﻿using InProPlayerWeb.Helper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
 
 namespace InProPlayerWeb.Controllers
 {
@@ -22,14 +20,15 @@ namespace InProPlayerWeb.Controllers
         [HttpGet("Player/Index/{page?}")]
         public IActionResult Index(int page = 1)
         {
-            PageHelper ph = new PageHelper();
-            ph.page = page;            
+            PageHelper<string> ph = new PageHelper<string>();
+            ph.page     = page;            
             ph.pageSize = 10;
             ph.pageList = getFileFolder();
 
             ViewBag.TotalPages  = ph.TotalPage();
             ViewBag.CurrentPage = ph.page;
-            ViewBag.fileList    = ph.PageList();
+            ViewBag.DataList    = ph.PageList();
+            ViewBag.Title       = "撥放器";
 
             return View();
         }

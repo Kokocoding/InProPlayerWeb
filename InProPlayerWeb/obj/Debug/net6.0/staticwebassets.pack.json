@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\InProPlayerWeb.bundle.scp.css"
     },
     {
+      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\css\\group.css",
+      "PackagePath": "staticwebassets\\css\\group.css"
+    },
+    {
       "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\css\\player.css",
       "PackagePath": "staticwebassets\\css\\player.css"
     },
@@ -19,6 +23,10 @@
     {
       "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\images\\logo.png",
       "PackagePath": "staticwebassets\\images\\logo.png"
+    },
+    {
+      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\js\\group.js",
+      "PackagePath": "staticwebassets\\js\\group.js"
     },
     {
       "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\js\\player.js",

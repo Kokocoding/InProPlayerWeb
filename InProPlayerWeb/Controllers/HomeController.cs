@@ -1,10 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using InProPlayerWeb.Helper;
-using InProPlayerWeb.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Data.Sqlite;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace InProWeb.Controllers
 {
@@ -28,8 +23,9 @@ namespace InProWeb.Controllers
 
         public IActionResult Index()
         {
-            ViewData["areaCount"] = areaCount;
-            ViewData["groupCount"] = groupCount;
+            ViewBag.areaCount  = areaCount;
+            ViewBag.groupCount = groupCount;
+            ViewBag.Title      = "分區控制";
             return View();
         }
 

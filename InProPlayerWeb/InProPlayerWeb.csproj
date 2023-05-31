@@ -7,9 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Helper\ListHelper.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Group\Group.json" />
+    <Content Remove="Views\Shared\_ListView.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.16" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.5" />
     <PackageReference Include="NAudio" Version="2.1.0" />
+    <PackageReference Include="Quartz" Version="3.6.2" />
     <PackageReference Include="System.IO.Ports" Version="7.0.0" />
   </ItemGroup>
 

@@ -1,0 +1,18 @@
+﻿{
+    "appendButton": true,
+    "editButton": true,
+    "deleteButton": true,
+
+    "pageSize": 10,
+
+    "list": {
+        "id": {
+            "name": "編號",
+            "css": "width:30%;"
+        },
+        "title": {
+            "name": "名稱",
+            "css": "width:70%;"
+        }
+    }
+}

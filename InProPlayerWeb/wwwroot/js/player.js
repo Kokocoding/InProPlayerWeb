@@ -73,6 +73,7 @@
             albumName.html(nowPlay);
             playerTrack.addClass("active");
             i.attr("class", "bi bi-pause-fill");
+            updateCurrTime();
             playAjax();
         } else {
             isPlay = false;
@@ -134,6 +135,7 @@
 
     function playFromClickedPos() {
         currentTime = seekLoc;
+        updateCurrTime();
         pauseAjax();
         playAjax();
         seekBar.width(seekT);
@@ -195,7 +197,7 @@
     function selectTrack(i) {
         clearInterval(intervalId); // 停止 setInterval
         isPlay = false;
-        selectMusic.removeAttr("style")
+        selectMusic.removeAttr("style");
         
         $.ajax({
             type: "POST",
@@ -249,7 +251,19 @@
         });
 
         selectMusic.on("click", function () {
-            selectMusic.removeAttr("style")
+            if (isPlay) {
+                $.ajax({
+                    type: "POST",
+                    url: "/Player/Stop",
+                    data: {},
+                    async: false,
+                    dataType: "json",
+                    success: function (response) {
+                    }
+                });
+            }
+
+            selectMusic.removeAttr("style");
             $(this).css("background", "lightgoldenrodyellow");
             currentTime = 0;
             flag = 0;
@@ -257,7 +271,7 @@
             isPlay = true;
             albumName.html(nowPlay);
             playerTrack.addClass("active");
-            i.attr("class", "bi bi-pause-fill");
+            i.attr("class", "bi bi-pause-fill");            
             playAjax();
         });
 

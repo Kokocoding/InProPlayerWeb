@@ -5,7 +5,7 @@
 body {
     font-family: Helvetica, Arial;
     margin: 0;
-    background-color: #ffeff5;
+    /*background-color: #ffeff5;*/
 }
 
 #app-cover {
@@ -30,7 +30,7 @@ body {
     right: 15px;
     left: 15px;
     padding: 10px;
-    background-color: #fff7f7;
+    background-color: #e3fff4;
     border-radius: 15px 15px 0 0;
     transition: 0.3s ease top;
     z-index: 1;
@@ -127,7 +127,7 @@ body {
 }
 
 #s-area {
-    background-color: #ffe8ee;
+    background-color: #000000;
     cursor: pointer;
 }
 
@@ -163,7 +163,7 @@ body {
     bottom: 0;
     left: 0;
     width: 0;
-    background-color: #fd6d94;
+    background-color: #6bffc4;
     transition: 0.2s ease width;
     z-index: 1;
 }
