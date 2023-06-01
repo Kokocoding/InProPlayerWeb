@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
-    var modalTitle = $('.modal-title'),
-        modelBody = $('.modal-body'),
-        myModal = $('#myModal'),
+    var modalerrorTitle = $('.modal-error-title'),
+        modelerrorBody = $('.modal-error-body'),
+        errorModal = $('#errorModal'),
         playerTrack = $("#player-track"),
         albumName = $("#albumName-marquee"),
         sArea = $("#s-area"),
@@ -19,6 +19,8 @@
         fileForm = $(".fileForm"),
         formFileMultiple = $("#formFileMultiple"),
         selectMusic = $(".selectMusic"),
+        TextToSpeeckBtn = $("#TextToSpeeck"),
+        speechText = $("[name='speechText']"),
         nowPlay = selectMusic.first().html(),
         seekT,
         seekLoc,
@@ -300,6 +302,17 @@
                 }
             }
         });
+
+        TextToSpeeckBtn.on("click", function () {
+            $.ajax({
+                type: "POST",
+                url: "/Player/TextToSpeech",
+                data: { speechText: speechText.val() },
+                dataType: "json",
+                success: function (response) {
+                }
+            });
+        });
     }
 
     initPlayer();
@@ -308,9 +321,9 @@
         if (formFileMultiple.get(0).files[0]) {
             return true;
         } else {
-            modalTitle.html("上傳錯誤!(Upload Error!)");
-            modelBody.html("請選擇檔案");
-            myModal.modal('show');
+            modalerrorTitle.html("上傳錯誤!(Upload Error!)");
+            modelerrorBody.html("請選擇檔案");
+            errorModal.modal('show');
             return false;
         }
     }

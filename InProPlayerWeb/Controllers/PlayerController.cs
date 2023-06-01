@@ -9,7 +9,7 @@ namespace InProPlayerWeb.Controllers
         private readonly ApplicationDbContext _context;
         private readonly NAudioHelper _np;
 
-        
+
         public PlayerController(IWebHostEnvironment hostingEnvironment, ApplicationDbContext context, NAudioHelper np)
         {
             _hostingEnvironment = hostingEnvironment;
@@ -21,14 +21,14 @@ namespace InProPlayerWeb.Controllers
         public IActionResult Index(int page = 1)
         {
             PageHelper<string> ph = new PageHelper<string>();
-            ph.page     = page;            
+            ph.page = page;
             ph.pageSize = 10;
             ph.pageList = getFileFolder();
 
-            ViewBag.TotalPages  = ph.TotalPage();
+            ViewBag.TotalPages = ph.TotalPage();
             ViewBag.CurrentPage = ph.page;
-            ViewBag.DataList    = ph.PageList();
-            ViewBag.Title       = "撥放器";
+            ViewBag.DataList = ph.PageList();
+            ViewBag.Title = "撥放器";
 
             return View();
         }
@@ -110,17 +110,17 @@ namespace InProPlayerWeb.Controllers
         [HttpPost]
         public void SetVolume(float volume)
         {
-            _np.SetVolume(volume/100);
+            _np.SetVolume(volume / 100);
         }
         [HttpPost]
         public string Track(string fileName, int Track, int flag)
         {
-            Stop();            
+            Stop();
             List<string> fileList = getFileFolder();
             string nextItem = fileList[0];
 
             //第一首
-            if(flag < 0) return nextItem;
+            if (flag < 0) return nextItem;
 
             int index = fileList.FindIndex(item => item == fileName);
             if ((index + Track > -1) && (index + Track < fileList.Count))
@@ -130,12 +130,17 @@ namespace InProPlayerWeb.Controllers
             }
 
             //最後一首
-            if(index + Track == fileList.Count)
+            if (index + Track == fileList.Count)
             {
                 nextItem = fileList[index];
             }
 
             return nextItem;
+        }
+        [HttpPost]
+        public void TextToSpeech(string speechText)
+        {
+            _np.ConvertTextToSpeech(speechText);
         }
     }
 }

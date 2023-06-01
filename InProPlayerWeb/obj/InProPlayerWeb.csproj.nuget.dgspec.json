@@ -64,6 +64,10 @@
             "System.IO.Ports": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "System.Speech": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             }
           },
           "imports": [

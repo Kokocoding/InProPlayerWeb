@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kv4P47Z4ZkzBTyUjyLvUSDR4AWiF4mIRFvCm0zhTeps=",
+  "Hash": "GWP0KY9dsyOl4kIQ/Ge1lj3bCRsW1VluCgrmpyNlRhc=",
   "Source": "InProPlayerWeb",
   "BasePath": "_content/InProPlayerWeb",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\player.css"
+    },
+    {
+      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\css\\SchedulerNPDay.css",
+      "SourceId": "InProPlayerWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\",
+      "BasePath": "_content/InProPlayerWeb",
+      "RelativePath": "css/SchedulerNPDay.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\SchedulerNPDay.css"
     },
     {
       "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\css\\site.css",
@@ -168,6 +185,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\player.js"
+    },
+    {
+      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\js\\SchedulerNPDay.js",
+      "SourceId": "InProPlayerWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\",
+      "BasePath": "_content/InProPlayerWeb",
+      "RelativePath": "js/SchedulerNPDay.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\SchedulerNPDay.js"
     },
     {
       "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\js\\site.js",
@@ -1360,12 +1394,12 @@
       "OriginalItemSpec": "wwwroot\\uploads\\【Lyric Video】結束バンド「星座になれたら」／ TVアニメ「ぼっち・ざ・ろっく！」第12話劇中曲_iz2p.mp3"
     },
     {
-      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\Ed Sheeran - Shape Of You ( cover by J.Fla )_uygf.mp3",
+      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\Ed Sheeran - Shape Of You ( cover by J.Fla ).mp3",
       "SourceId": "InProPlayerWeb",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\",
       "BasePath": "_content/InProPlayerWeb",
-      "RelativePath": "uploads/Ed Sheeran - Shape Of You ( cover by J.Fla )_uygf.mp3",
+      "RelativePath": "uploads/Ed Sheeran - Shape Of You ( cover by J.Fla ).mp3",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1374,7 +1408,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\Ed Sheeran - Shape Of You ( cover by J.Fla )_uygf.mp3"
+      "OriginalItemSpec": "wwwroot\\uploads\\Ed Sheeran - Shape Of You ( cover by J.Fla ).mp3"
     },
     {
       "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\end of a life - Calliope Mori (Original Song).mp3",
@@ -1445,12 +1479,12 @@
       "OriginalItemSpec": "wwwroot\\uploads\\SEKAI NO OWARI「Habit」.mp3"
     },
     {
-      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\Selena Gomez, Marshmello - Wolves ( cover by J.Fla )_wypx.mp3",
+      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\Selena Gomez, Marshmello - Wolves ( cover by J.Fla ).mp3",
       "SourceId": "InProPlayerWeb",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\",
       "BasePath": "_content/InProPlayerWeb",
-      "RelativePath": "uploads/Selena Gomez, Marshmello - Wolves ( cover by J.Fla )_wypx.mp3",
+      "RelativePath": "uploads/Selena Gomez, Marshmello - Wolves ( cover by J.Fla ).mp3",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1459,15 +1493,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\Selena Gomez, Marshmello - Wolves ( cover by J.Fla )_wypx.mp3"
+      "OriginalItemSpec": "wwwroot\\uploads\\Selena Gomez, Marshmello - Wolves ( cover by J.Fla ).mp3"
     },
     {
-      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\TONES AND I - Dance Monkey ( cover by J.Fla )_3x3d.mp3",
+      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\TONES AND I - Dance Monkey ( cover by J.Fla ).mp3",
       "SourceId": "InProPlayerWeb",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\",
       "BasePath": "_content/InProPlayerWeb",
-      "RelativePath": "uploads/TONES AND I - Dance Monkey ( cover by J.Fla )_3x3d.mp3",
+      "RelativePath": "uploads/TONES AND I - Dance Monkey ( cover by J.Fla ).mp3",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1476,7 +1510,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\TONES AND I - Dance Monkey ( cover by J.Fla )_3x3d.mp3"
+      "OriginalItemSpec": "wwwroot\\uploads\\TONES AND I - Dance Monkey ( cover by J.Fla ).mp3"
     },
     {
       "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\YOASOBI「怪物」Official Music Video.mp3",

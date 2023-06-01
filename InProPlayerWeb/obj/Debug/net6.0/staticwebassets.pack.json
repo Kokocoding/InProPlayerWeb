@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\InProPlayerWeb.bundle.scp.css"
     },
     {
+      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\css\\SchedulerNPDay.css",
+      "PackagePath": "staticwebassets\\css\\SchedulerNPDay.css"
+    },
+    {
       "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\css\\group.css",
       "PackagePath": "staticwebassets\\css\\group.css"
     },
@@ -23,6 +27,10 @@
     {
       "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\images\\logo.png",
       "PackagePath": "staticwebassets\\images\\logo.png"
+    },
+    {
+      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\js\\SchedulerNPDay.js",
+      "PackagePath": "staticwebassets\\js\\SchedulerNPDay.js"
     },
     {
       "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\js\\group.js",
@@ -285,8 +293,8 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\Ed Sheeran - Shape Of You ( cover by J.Fla )_uygf.mp3",
-      "PackagePath": "staticwebassets\\uploads\\Ed Sheeran - Shape Of You ( cover by J.Fla )_uygf.mp3"
+      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\Ed Sheeran - Shape Of You ( cover by J.Fla ).mp3",
+      "PackagePath": "staticwebassets\\uploads\\Ed Sheeran - Shape Of You ( cover by J.Fla ).mp3"
     },
     {
       "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\KING _ Gawr Gura x Calliope Mori (Cover).mp3",
@@ -301,12 +309,12 @@
       "PackagePath": "staticwebassets\\uploads\\SEKAI NO OWARI「Habit」.mp3"
     },
     {
-      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\Selena Gomez, Marshmello - Wolves ( cover by J.Fla )_wypx.mp3",
-      "PackagePath": "staticwebassets\\uploads\\Selena Gomez, Marshmello - Wolves ( cover by J.Fla )_wypx.mp3"
+      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\Selena Gomez, Marshmello - Wolves ( cover by J.Fla ).mp3",
+      "PackagePath": "staticwebassets\\uploads\\Selena Gomez, Marshmello - Wolves ( cover by J.Fla ).mp3"
     },
     {
-      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\TONES AND I - Dance Monkey ( cover by J.Fla )_3x3d.mp3",
-      "PackagePath": "staticwebassets\\uploads\\TONES AND I - Dance Monkey ( cover by J.Fla )_3x3d.mp3"
+      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\TONES AND I - Dance Monkey ( cover by J.Fla ).mp3",
+      "PackagePath": "staticwebassets\\uploads\\TONES AND I - Dance Monkey ( cover by J.Fla ).mp3"
     },
     {
       "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\uploads\\YOASOBI「怪物」Official Music Video.mp3",

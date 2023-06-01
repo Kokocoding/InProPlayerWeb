@@ -30,3 +30,19 @@ body {
 .main {
     margin-top: 10px;
 }
+
+.table {
+    display: table;
+    width: 100%;
+}
+
+.table-row {
+    display: table-row;
+    cursor: pointer;
+}
+
+.table-cell {
+    display: table-cell;
+    padding: 8px;
+    border: 1px solid #ccc;
+}

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "L7fdBiNCuxeZSHo3ps1K7XKwN7xlgVYTXT17ILHm0qDdPPlFLcEDniQcXaUTbtXUsiHn9prTtHL92nhUC2LKgg==",
+  "dgSpecHash": "HaP/v8R3qXEDutvKZt9fPeTdW82ehLwC3cgzQtAOcNFNrOkJl+DMaJYdUqMnLPZLm9zcPDVjbemnqKVJEITcWg==",
   "success": true,
   "projectFilePath": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\InProPlayerWeb.csproj",
   "expectedPackageFiles": [
@@ -60,6 +60,7 @@
     "C:\\Users\\InproKo\\.nuget\\packages\\system.security.cryptography.protecteddata\\6.0.0\\system.security.cryptography.protecteddata.6.0.0.nupkg.sha512",
     "C:\\Users\\InproKo\\.nuget\\packages\\system.security.permissions\\6.0.0\\system.security.permissions.6.0.0.nupkg.sha512",
     "C:\\Users\\InproKo\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
+    "C:\\Users\\InproKo\\.nuget\\packages\\system.speech\\7.0.0\\system.speech.7.0.0.nupkg.sha512",
     "C:\\Users\\InproKo\\.nuget\\packages\\system.text.encoding.codepages\\4.5.1\\system.text.encoding.codepages.4.5.1.nupkg.sha512",
     "C:\\Users\\InproKo\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\InproKo\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512",

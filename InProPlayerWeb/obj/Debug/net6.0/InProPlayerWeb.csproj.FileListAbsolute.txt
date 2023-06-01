@@ -411,3 +411,5 @@ D:\www\InProPlayerWeb\InProPlayerWeb\bin\Debug\net6.0\runtimes\unix\lib\net6.0\S
 D:\www\InProPlayerWeb\InProPlayerWeb\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 D:\www\InProPlayerWeb\InProPlayerWeb\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\www\InProPlayerWeb\InProPlayerWeb\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\www\InProPlayerWeb\InProPlayerWeb\bin\Debug\net6.0\System.Speech.dll
+D:\www\InProPlayerWeb\InProPlayerWeb\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Speech.dll

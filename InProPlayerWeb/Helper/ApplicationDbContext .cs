@@ -12,6 +12,6 @@ namespace InProPlayerWeb.Helper
 
         public DbSet<Configuration> Configuration { get; set; }
         public DbSet<Group> Group { get; set; }
-
+        public DbSet<SchedulerNPDay> SchedulerNPDay { get; set; } 
     }
 }

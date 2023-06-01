@@ -9,9 +9,8 @@
     <link href="~/css/site.css" rel="stylesheet" />
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js"></script>    
+    <script src="~/js/site.js"></script> 
 </head>
 <body>
     <header>
@@ -36,9 +35,9 @@
                                 定時設定
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">不播放日設定</a></li>
+                                <li><a class="dropdown-item" href="/SchedulerNPDay/Index">不播放日設定</a></li>
                                 <li><a class="dropdown-item" href="/Group/Index">群組設定</a></li>
-                                <li><a class="dropdown-item" href="#">定時設定</a></li>
+                                <li><a class="dropdown-item" href="">定時設定</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -57,21 +56,42 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <!-- Error Modal -->
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="ModalLabel">@ViewData["ErrorTitle"]</h5>
-                    <button type="button" class="btn btn-outline-secondary close" data-dismiss="modal" aria-label="Close" onClick="$('#myModal').modal('hide');">
+                    <h5 class="modal-error-title modal-title" id="ModalLabel">@ViewData["ErrorTitle"]</h5>
+                    <button type="button" class="btn btn-outline-secondary close" data-dismiss="modal" aria-label="Close" onClick="$('#errorModal').modal('hide');">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-error-body modal-body">
                     @ViewData["ErrorBody"]
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" data-dismiss="modal" onClick="$('#myModal').modal('hide');">關閉</button>
+                    <button type="button" class="btn btn-dark" data-dismiss="modal" onClick="$('#errorModal').modal('hide');">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Check Modal -->
+    <div class="modal fade" id="checkModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-check-title modal-title" id="ModelLabel">@ViewData["checkTitle"]</h5>
+                    <button type="button" class="btn btn-outline-secondary close" data-dismiss="modal" aria-label="Close" onClick="$('#checkModal').modal('hide');">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-check-body modal-body">
+                    @ViewData["checkBody"]
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary checkModelBtn">確定</button>
+                    <button type="button" class="btn btn-dark" data-dismiss="modal" onClick="$('#checkModal').modal('hide');">取消</button>
                 </div>
             </div>
         </div>

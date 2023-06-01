@@ -1,4 +1,9 @@
-﻿using NAudio.Wave;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
+using System.Speech.Recognition;
+using System.Speech.Synthesis;
 
 namespace InProPlayerWeb.Helper
 {
@@ -91,6 +96,44 @@ namespace InProPlayerWeb.Helper
         {
             Volume = volume;
             if(outputDevice != null) outputDevice.Volume = Volume;
+        }
+
+        public void ConvertTextToSpeech(string text)
+        {
+            using (var synthesizer = new SpeechSynthesizer())
+            {
+                // 设置语音合成的参数
+                synthesizer.Volume = 100; // 设置音量（0-100）
+                synthesizer.Rate = 0; // 设置语速（-10到10）
+
+                // 将文字转换为音频流
+                synthesizer.Speak(text);
+            }
+        }
+
+        public void ConvertSpeechToText()
+        {
+            WaveInEvent waveInEvent = new WaveInEvent();
+            waveInEvent.DeviceNumber = 0; // 音频输入设备索引
+            waveInEvent.WaveFormat = new WaveFormat(16000, 16, 1); // 采样率、位深度、声道数
+
+            SpeechRecognitionEngine recognitionEngine = new SpeechRecognitionEngine();
+            recognitionEngine.SpeechRecognized += RecognizedSpeechHandler;
+
+            waveInEvent.StartRecording();
+            recognitionEngine.SetInputToDefaultAudioDevice(); // 设置语音输入源为默认音频设备
+            recognitionEngine.RecognizeAsync(RecognizeMode.Multiple); // 开始语音识别
+
+
+
+            waveInEvent.StopRecording();
+            recognitionEngine.RecognizeAsyncStop();
+        }
+
+        private void RecognizedSpeechHandler(object sender, SpeechRecognizedEventArgs e)
+        {
+            string recognizedText = e.Result.Text;
+            // 处理识别到的文字结果
         }
     }
 }

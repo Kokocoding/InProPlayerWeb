@@ -1,0 +1,31 @@
+﻿<link href="~/css/SchedulerNPDay.css" rel="stylesheet" />
+<form method="post" action="/SchedulerNPDay/Append">
+    <div class="mb-3 row">
+        <label for="DayName" class="form-label col-sm-2 col-form-label text-center">名稱</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="DayName" name="DayName" required>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="NPDay" class="form-label col-sm-2 col-form-label text-center">日期</label>
+        <div class="col-sm-10">
+            <select class="form-select" name="NPDayMonth" required>
+                @for(int i = 1; i<13; i++)
+                {
+                    <option value="@i">@i</option>
+                }
+            </select>　月　
+            <select class="form-select" name="NPDayDay" required>
+                @for (int i = 1; i < 32; i++)
+                {
+                    <option value="@i">@i</option>
+                }
+            </select>　日
+        </div>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary">送出</button>
+        <button type="button" class="btn btn-primary" onclick="history.back();">取消</button>
+    </div>
+</form>
+<script src="~/js/SchedulerNPDay.js"></script>
