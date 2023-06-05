@@ -10,17 +10,21 @@
 <h3>@ViewData["Title"]</h3>
 <div id="playerList">
     <form class="fileForm row" method="post" enctype="multipart/form-data" action="/Player/Upload">
-        <div class="col-auto">
-            <input class="form-control" type="file" id="formFileMultiple" name="files" multiple accept="audio/mp3,audio/*;capture=microphone">
+        <div class="row marginB10">
+            <div class="col-9">
+                <input type="text" class="form-control" name="speechText" />
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-primary" id="TextToSpeeck">文字轉語音</button>
+            </div>
         </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-primary mb-3">上傳</button>
-        </div>
-        <div class="col-auto">
-            <input type="text" class="form-control" name="speechText" />            
-        </div>
-        <div class="col-auto">
-            <button type="button" class="btn btn-primary" id="TextToSpeeck">文字轉語音</button>
+        <div class="row">
+            <div class="col-9">
+                <input class="form-control" type="file" id="formFileMultiple" name="files" multiple accept="audio/mp3,audio/*;capture=microphone">
+            </div>
+            <div class="col-3">
+                <button type="submit" class="btn btn-primary mb-3">上傳</button>
+            </div>
         </div>
     </form>
 

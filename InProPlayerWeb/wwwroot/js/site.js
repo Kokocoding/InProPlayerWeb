@@ -5,10 +5,10 @@
         var onoff = "";
         if ($(this).hasClass("bi-toggle2-off")) {
             $(this).removeClass("bi-toggle2-off").removeClass("btn-primary").addClass("btn-outline-primary").addClass("bi-toggle2-on").html("&nbsp;開啟");
-            onoff = true;
+            onoff = false;
         } else if ($(this).hasClass("bi-toggle2-on")) {
             $(this).removeClass("bi-toggle2-on").removeClass("btn-outline-primary").addClass("btn-primary").addClass("bi-toggle2-off").html("&nbsp;關閉");
-            onoff = false;
+            onoff = true;
         }
 
         $(this).blur();

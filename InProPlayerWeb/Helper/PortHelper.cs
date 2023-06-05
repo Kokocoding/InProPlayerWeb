@@ -10,7 +10,7 @@ namespace InProPlayerWeb.Helper
         public static byte[] CmdFrequAndTemp = new byte[] { 0xAA, 0xA4, 0x00, 0x00, 0x00, 0x00, 0xBF };
         public static byte[] CmdPwrAndSwr = new byte[] { 0xAA, 0xA3, 0x00, 0x00, 0x00, 0x00, 0xEE };
 
-        public string PortName = "Com1";
+        public string PortName = "Com3";
         public int BaudRate = 9600;
 
         public PortHelper()
