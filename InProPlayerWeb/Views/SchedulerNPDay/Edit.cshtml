@@ -3,8 +3,7 @@
 @{
     string[] days = Model.NPDay.Split("/");
 }
-
-<link href="~/css/SchedulerNPDay.css" rel="stylesheet" />
+<link href="~/css/schedulerNPDay.css" rel="stylesheet" />
 <form method="post" action="/SchedulerNPDay/Edit">
     <input type="hidden" class="form-control" id="id" name="id" value="@Model.id" >
     <div class="mb-3 row">
@@ -38,4 +37,4 @@
         <button type="button" class="btn btn-primary" onclick="history.back();">取消</button>
     </div>
 </form>
-<script src="~/js/SchedulerNPDay.js"></script>
+<script src="~/js/schedulerNPDay.js"></script>

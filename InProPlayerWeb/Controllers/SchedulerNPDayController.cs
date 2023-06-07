@@ -12,7 +12,6 @@ namespace InProPlayerWeb.Controllers
         public SchedulerNPDayController(ApplicationDbContext context)
         {
             _context = context;
-
         }
 
         [HttpGet("SchedulerNPDay/Index/{page?}")]

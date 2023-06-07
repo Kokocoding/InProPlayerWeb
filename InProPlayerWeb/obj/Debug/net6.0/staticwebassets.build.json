@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "GWP0KY9dsyOl4kIQ/Ge1lj3bCRsW1VluCgrmpyNlRhc=",
+  "Hash": "IN+451jPKCS8CICphB4eCN1Qm7M9GAVF0CGNQduLpWM=",
   "Source": "InProPlayerWeb",
   "BasePath": "_content/InProPlayerWeb",
   "Mode": "Default",
@@ -51,23 +51,6 @@
       "OriginalItemSpec": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\InProPlayerWeb.bundle.scp.css"
     },
     {
-      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\css\\group.css",
-      "SourceId": "InProPlayerWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\",
-      "BasePath": "_content/InProPlayerWeb",
-      "RelativePath": "css/group.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\group.css"
-    },
-    {
       "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\css\\player.css",
       "SourceId": "InProPlayerWeb",
       "SourceType": "Discovered",
@@ -85,12 +68,12 @@
       "OriginalItemSpec": "wwwroot\\css\\player.css"
     },
     {
-      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\css\\SchedulerNPDay.css",
+      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\css\\schedulerNPDay.css",
       "SourceId": "InProPlayerWeb",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\",
       "BasePath": "_content/InProPlayerWeb",
-      "RelativePath": "css/SchedulerNPDay.css",
+      "RelativePath": "css/schedulerNPDay.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -99,7 +82,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\SchedulerNPDay.css"
+      "OriginalItemSpec": "wwwroot\\css\\schedulerNPDay.css"
     },
     {
       "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\css\\site.css",
@@ -170,6 +153,23 @@
       "OriginalItemSpec": "wwwroot\\js\\group.js"
     },
     {
+      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\js\\home.js",
+      "SourceId": "InProPlayerWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\",
+      "BasePath": "_content/InProPlayerWeb",
+      "RelativePath": "js/home.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\home.js"
+    },
+    {
       "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\js\\player.js",
       "SourceId": "InProPlayerWeb",
       "SourceType": "Discovered",
@@ -187,12 +187,12 @@
       "OriginalItemSpec": "wwwroot\\js\\player.js"
     },
     {
-      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\js\\SchedulerNPDay.js",
+      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\js\\scheduler.js",
       "SourceId": "InProPlayerWeb",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\",
       "BasePath": "_content/InProPlayerWeb",
-      "RelativePath": "js/SchedulerNPDay.js",
+      "RelativePath": "js/scheduler.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -201,7 +201,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\SchedulerNPDay.js"
+      "OriginalItemSpec": "wwwroot\\js\\scheduler.js"
+    },
+    {
+      "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\js\\schedulerNPDay.js",
+      "SourceId": "InProPlayerWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\",
+      "BasePath": "_content/InProPlayerWeb",
+      "RelativePath": "js/schedulerNPDay.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\schedulerNPDay.js"
     },
     {
       "Identity": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\js\\site.js",

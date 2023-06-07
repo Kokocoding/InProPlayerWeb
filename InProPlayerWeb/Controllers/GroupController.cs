@@ -12,7 +12,6 @@ namespace InProPlayerWeb.Controllers
         public GroupController(ApplicationDbContext context)
         {
             _context = context;
-
         }
 
         [HttpGet("Group/Index/{page?}")]

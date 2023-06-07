@@ -1,8 +1,11 @@
-﻿<form method="post" action="/Group/Append">
+﻿@model InProPlayerWeb.Models.Scheduler
+
+<form method="post" action="/Scheduler/Edit">
+    <input type="hidden" class="form-control" name="id" value="@Model.id">
     <div class="mb-3 row">
         <label for="title" class="form-label col-sm-2 col-form-label text-center">群組名稱</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="title" name="title" required>
+            <input type="text" class="form-control" id="title" name="SchedulerName" value="@Model.SchedulerName" required>
         </div>
     </div>
     <div class="text-center">
@@ -10,4 +13,4 @@
         <button type="button" class="btn btn-primary" onclick="history.back();">取消</button>
     </div>
 </form>
-<script src="~/js/group.js"></script>
+<script src="~/js/scheduler.js"></script>

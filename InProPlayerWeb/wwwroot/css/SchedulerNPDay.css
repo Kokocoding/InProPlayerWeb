@@ -1,16 +1,5 @@
-﻿.active {
-    background-color: #f0f0f0;
-}
-
-.btn-group{
-    margin-bottom:10px;
-}
-
-.input-group{
-    margin-bottom:10px;
-}
-
-.form-select{
+﻿
+.form-select {
     display: inline;
-    max-width:20%;
+    max-width: 20%;
 }
