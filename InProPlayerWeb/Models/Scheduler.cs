@@ -23,6 +23,19 @@ namespace InProPlayerWeb.Models
 		public string? Week { get; set; }
 		public string? Time { get; set; }	
 		public string? GroupName { get; set; }
+    }
 
+	public class SchedulerAppend : Scheduler 
+	{ 
+		public string[] Week { get; set; }		
+		public DateTime Time { get; set; }
+        public string[] Terminal { get; set; }
+    }
+
+    public class SchedulerEdit : Scheduler
+    {
+        public string[] Week { get; set; }
+        public string Time { get; set; }
+        public string[] Terminal { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿<form method="post" action="/Scheduler/Append">
+    <div class="hiddenDiv" hidden></div>
     <div class="mb-3 row">
         <label for="title" class="form-label col-sm-2 col-form-label text-center">名稱</label>
         <div class="col-sm-10">
@@ -18,17 +19,21 @@
     </div>
     <div class="mb-3 row">
         <label for="week" class="form-label col-sm-2 col-form-label text-center">定時星期</label>
-        <div class="col-sm-10">
-            <input type="checkbox" class="form-check-input" name="week[]" value="*" id="flexCheckChecked-*">
-            <label class="form-check-label" for="flexCheckChecked-*">
-                每日　
-            </label>
+        <div class="col-sm-10 row">
+            <div class="col-md-2 col-sm-12 col-12">
+                <input type="checkbox" class="form-check-input" name="week[]" value="0" id="flexCheckChecked-0">
+                <label class="form-check-label" for="flexCheckChecked-0">
+                    每日　
+                </label>
+            </div>
             @for(int i = 1; i <= 7; i++)
             {
-                <input type="checkbox" class="form-check-input" name="week[]" value="@i" id="flexCheckChecked-@i">
-                <label class="form-check-label" for="flexCheckChecked-@i">
-                    @ViewBag.WeekDict[@i.ToString()]　
-                </label>
+                <div class="col-md-2 col-sm-4 col-6">
+                    <input type="checkbox" class="form-check-input" name="week[]" value="@i" id="flexCheckChecked-@i">
+                    <label class="form-check-label" for="flexCheckChecked-@i">
+                        @ViewBag.WeekDict[@i.ToString()]　
+                    </label>
+                </div>
             }
         </div>
     </div>
@@ -58,6 +63,31 @@
         <label for="KeepTimes" class="form-label col-sm-2 col-form-label text-center">播放秒數</label>
         <div class="col-sm-10 ">
             <input type="text" class="form-control col-sm-10" name="KeepTimes" placeholder="單位秒 ex.120秒請輸入 120">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="GroupID" class="form-label col-sm-2 col-form-label text-center">音樂</label>
+        <div class="col-sm-10">
+            <select class="form-select" name="Music">
+                @foreach (var data in ViewBag.FileName)
+                {
+                    <option value="@data">@data</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="GroupID" class="form-label col-sm-2 col-form-label text-center">分區設定</label>
+        <div class="col-sm-10 row">
+            @for (int i = 1; i <= ViewBag.areaCount; i++)
+            {
+                <div class="col-md-2 col-sm-4 col-6">
+                    <input type="checkbox" class="form-check-input" name="Terminal[]" value="@i" id="Terminal-@i">
+                    <label class="form-check-label" for="Terminal-@i">
+                        第 @i 區　
+                    </label>
+                </div>
+            }
         </div>
     </div>
     <div class="text-center">

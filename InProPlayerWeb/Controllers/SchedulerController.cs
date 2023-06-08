@@ -2,14 +2,15 @@
 using InProPlayerWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.ObjectModel;
 
 namespace InProPlayerWeb.Controllers
 {
     public class SchedulerController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _hostingEnvironment;
 
+        private readonly int areaCount = 20;
         private Dictionary<string, string> weekDayDict = new Dictionary<string, string>()
         {
             {"2", "星期一"}, {"3", "星期二"}, {"4", "星期三"}, {"5", "星期四"}, {"6", "星期五"}, {"7", "星期六"}, {"1", "星期日"}
@@ -19,8 +20,11 @@ namespace InProPlayerWeb.Controllers
             {"1", "31"}, {"2", "29"}, {"3", "31"}, {"4", "30"}, {"5", "31"}, {"6", "30"},
             {"7", "31"}, {"8", "31"}, {"9", "30"}, {"10", "31"}, {"11", "30"}, {"12", "31"}
         };
-        public SchedulerController(ApplicationDbContext context)
+
+
+        public SchedulerController(IWebHostEnvironment hostingEnvironment, ApplicationDbContext context)
         {
+            _hostingEnvironment = hostingEnvironment;
             _context = context;
         }
         [HttpGet("Scheduler/Index/{page?}")]
@@ -69,20 +73,49 @@ namespace InProPlayerWeb.Controllers
         [HttpGet]
         public ViewResult Append()
         {
+            string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
+            string[] filePath = Directory.GetFiles(uploadsFolder, "*.mp3");
+            string[] fileName = filePath.Select(filePath => Path.GetFileName(filePath)).ToArray();
+
             List<Group> group = _context.Group.ToList();
             ViewBag.GroupSelect = group;
+            ViewBag.FileName = fileName;
             ViewBag.WeekDict = weekDayDict;
+            ViewBag.areaCount = areaCount;
             return View();
         }
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            // 根据 id 获取对应的 Group 对象
+            string uploadsFolder = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
+            string[] filePath = Directory.GetFiles(uploadsFolder, "*.mp3");
+            string[] fileName = filePath.Select(filePath => Path.GetFileName(filePath)).ToArray();
+
+            List<Group> group = _context.Group.ToList();
+            ViewBag.GroupSelect = group;
+            ViewBag.FileName = fileName;
+            ViewBag.WeekDict = weekDayDict;
+            ViewBag.areaCount = areaCount;
+
             Scheduler scheduler = _context.Scheduler.Find(id);
 
-            if (scheduler != null)
+            SchedulerEdit newScheduler = new SchedulerEdit
             {
-                return View(scheduler);
+                id = id,
+                SchedulerName = scheduler.SchedulerName,
+                GroupID = scheduler.GroupID,
+                LoopType = scheduler.LoopType,
+                LoopTimes = scheduler.LoopTimes,
+                KeepTimes = scheduler.KeepTimes,
+                Music = scheduler.Music,
+                Time = CronReString(scheduler.StartCron, "Time"),
+                Week = CronReString(scheduler.StartCron, "WeekDay").Split(","),
+                Terminal = scheduler.Terminal.Split(",")
+            };
+
+            if (newScheduler != null)
+            {
+                return View(newScheduler);
             }
 
             return RedirectToAction("Index");
@@ -100,12 +133,19 @@ namespace InProPlayerWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult Append(Scheduler scheduler)
+        public IActionResult Append(SchedulerAppend scheduler)
         {
             //SchedulerModel
             Scheduler newScheduler = new Scheduler
             {
-                SchedulerName = scheduler.SchedulerName
+                SchedulerName = scheduler.SchedulerName,
+                GroupID = scheduler.GroupID,
+                LoopType = scheduler.LoopType,
+                LoopTimes = scheduler.LoopTimes,
+                KeepTimes = scheduler.KeepTimes,
+                Music = scheduler.Music,
+                StartCron = CronString(scheduler.Time.ToString("ss mm HH"), scheduler.Week),
+                Terminal = TerminalString(scheduler.Terminal)
             };
 
             // 将新的 Scheduler 对象添加到上下文中
@@ -118,10 +158,23 @@ namespace InProPlayerWeb.Controllers
             return RedirectToAction("Index");
         }
         [HttpPost]
-        public IActionResult Edit(Scheduler scheduler)
+        public IActionResult Edit(SchedulerAppend scheduler)
         {
+            //SchedulerModel
+            Scheduler newScheduler = new Scheduler
+            {
+                id = scheduler.id,
+                SchedulerName = scheduler.SchedulerName,
+                GroupID = scheduler.GroupID,
+                LoopType = scheduler.LoopType,
+                LoopTimes = scheduler.LoopTimes,
+                KeepTimes = scheduler.KeepTimes,
+                Music = scheduler.Music,
+                StartCron = CronString(scheduler.Time.ToString("ss mm HH"), scheduler.Week),
+                Terminal = TerminalString(scheduler.Terminal)
+            };
             // 更新 Scheduler 对象的属性
-            _context.Scheduler.Update(scheduler);
+            _context.Scheduler.Update(newScheduler);
 
             // 保存更改到数据库
             _context.SaveChanges();
@@ -130,61 +183,46 @@ namespace InProPlayerWeb.Controllers
             return RedirectToAction("Index");
         }
 
-        public string CronString(string sTime, ObservableCollection<bool> Days)
+        public string TerminalString(string[] Terminal)
         {
-            List<string> week = new List<string>();
-            if (Days[7]) week.Add("*");
-            else
+            string[] result = new string[areaCount];
+
+            for(int i = 0; i < areaCount; i++)
             {
-                if (Days[0]) week.Add("1");
-                if (Days[1]) week.Add("2");
-                if (Days[2]) week.Add("3");
-                if (Days[3]) week.Add("4");
-                if (Days[4]) week.Add("5");
-                if (Days[5]) week.Add("6");
-                if (Days[6]) week.Add("7");
+                if (Terminal.Any(s => s == (i + 1).ToString()))
+                {
+                    result[i] = "1";
+                }
+                else
+                {
+                    result[i] = "0";
+                }
             }
 
-            if (week.Count == 0) week.Add("*");
+            return string.Join(',', result);
+        }
+        public string CronString(string sTime, string[] Days)
+        {
+            string Day = "";
+            if(Days.Any(s => s == "0")) {
+                Day = "*";
+            }
+            else
+            {
+                Day = string.Join(",", Days);
+            }
+
             //result 補 日 月 * 格式: Start Cron:End Cron
-            string result = sTime + " ? * " + string.Join(",", week.ToArray());
+            string result = sTime + " ? * " + Day;
             return result;
         }
-        public string CronReString(string Cron, string reType, int addSecond = 0)
+        public string CronReString(string Cron, string reType)
         {
             string result = "";
             string[] cronString = Cron.Split(' ');
 
             switch (reType)
             {
-                case "OpenCron":
-                    int newHour = int.Parse(cronString[2]);
-                    int newMinute = int.Parse(cronString[1]);
-                    int newSecond = int.Parse(cronString[0]) - addSecond;
-
-                    if (newSecond < 0)
-                    {
-                        newSecond += 60;
-                        newMinute -= 1;
-                    }
-                    if (newMinute < 0)
-                    {
-                        newMinute += 60;
-                        newHour -= 1;
-                    }
-
-                    if (newSecond >= 60)
-                    {
-                        newSecond -= 60;
-                        newMinute += 1;
-                    }
-                    if (newMinute >= 60)
-                    {
-                        newMinute -= 60;
-                        newHour += 1;
-                    }
-                    result = $"{newSecond} {newMinute} {newHour} {cronString[3]} {cronString[4]} {cronString[5]}";
-                    break;
                 case "DateTime":
                     result = DateTime.Now.ToString("yyyy/mm/dd ") + cronString[2] + ":" + cronString[1] + ":" + cronString[0];
                     break;
@@ -200,7 +238,7 @@ namespace InProPlayerWeb.Controllers
                 case "WeekString":
                     if (cronString[5] == "*")
                     {
-                        result = $"每日";
+                        result = "每日";
                     }
                     else
                     {

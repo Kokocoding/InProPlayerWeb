@@ -9,7 +9,7 @@ namespace InProWeb.Controllers
         private readonly PortHelper _portHelper;
 
         private readonly int areaCount = 20;
-        private readonly int groupCount = 6;        
+        private readonly int groupCount = 6;
         private bool[] ZoneStatus = Enumerable.Repeat(false, 20).ToArray();
 
         public HomeController(PortHelper portHelper, ApplicationDbContext context)

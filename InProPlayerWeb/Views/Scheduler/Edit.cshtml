@@ -1,11 +1,131 @@
-﻿@model InProPlayerWeb.Models.Scheduler
+﻿@model InProPlayerWeb.Models.SchedulerEdit
 
 <form method="post" action="/Scheduler/Edit">
-    <input type="hidden" class="form-control" name="id" value="@Model.id">
+    <input type="hidden" name="id" value="@Model.id"/>
     <div class="mb-3 row">
-        <label for="title" class="form-label col-sm-2 col-form-label text-center">群組名稱</label>
+        <label for="title" class="form-label col-sm-2 col-form-label text-center">名稱</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="title" name="SchedulerName" value="@Model.SchedulerName" required>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="GroupID" class="form-label col-sm-2 col-form-label text-center">群組</label>
+        <div class="col-sm-10">
+            <select class="form-select" name="GroupID">
+                @foreach (var data in ViewBag.GroupSelect)
+                {
+                    if (data.id == Model.GroupID)
+                    {
+                        <option value="@data.id" selected>@data.title</option>
+                    }
+                    else
+                    {
+                        <option value="@data.id">@data.title</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="week" class="form-label col-sm-2 col-form-label text-center">定時星期</label>
+        <div class="col-sm-10">
+            <div class="col-md-2 col-sm-12 col-12">
+                @if (Model.Week[0] == "*")
+                {
+                    <input type="checkbox" class="form-check-input" name="week[]" value="0" id="flexCheckChecked-0" checked>
+                }
+                else
+                {
+                    <input type="checkbox" class="form-check-input" name="week[]" value="0" id="flexCheckChecked-0">
+                }
+                <label class="form-check-label" for="flexCheckChecked-0">
+                    每日　
+                </label>
+            </div>
+            @for (int i = 1; i <= 7; i++)
+            {
+                <div class="col-md-2 col-sm-4 col-6">
+                    @if (Model.Week.Any(s => s == i.ToString()))
+                    {
+                        <input type="checkbox" class="form-check-input" name="week[]" value="@i" id="flexCheckChecked-@i" checked>
+                    }
+                    else
+                    {
+                        <input type="checkbox" class="form-check-input" name="week[]" value="@i" id="flexCheckChecked-@i">
+                    }
+                    <label class="form-check-label" for="flexCheckChecked-@i">
+                        @ViewBag.WeekDict[@i.ToString()]　
+                    </label>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="time" class="form-label col-sm-2 col-form-label text-center">定時日期</label>
+        <div class="col-sm-10">
+            <input type="time" class="form-control form-time" name="time" step="1" pattern="([01]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" value="@Model.Time" />
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="LoopType" class="form-label col-sm-2 col-form-label text-center">播放模式</label>
+        <div class="col-sm-10">
+            <select name="LoopType" class="form-select">
+                <option value=""></option>
+                <option value="1" selected="@(Model.LoopType == 1 ? "selected" : "")">播放次數</option>
+                <option value="2" selected="@(Model.LoopType == 2 ? "selected" : "")">播放秒數</option>
+            </select>
+        </div>
+    </div>
+    <div class="mb-3 row LoopType1 @(Model.LoopType == 1 ? "" : "LoopTypeNone")">
+        <label for="LoopTimes" class="form-label col-sm-2 col-form-label text-center">播放次數</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="LoopTimes" value="@Model.LoopTimes" placeholder="單位次 ex.3次請輸入 3">
+        </div>
+    </div>
+    <div class="mb-3 row LoopType2 @(Model.LoopType == 2 ? "" : "LoopTypeNone")">
+        <label for="KeepTimes" class="form-label col-sm-2 col-form-label text-center">播放秒數</label>
+        <div class="col-sm-10 ">
+            <input type="text" class="form-control col-sm-10" name="KeepTimes" value="@Model.KeepTimes" placeholder="單位秒 ex.120秒請輸入 120">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="GroupID" class="form-label col-sm-2 col-form-label text-center" >音樂</label>
+        <div class="col-sm-10">
+            <select class="form-select" name="Music">
+                @foreach (var data in ViewBag.FileName)
+                {
+                    if(data == Model.Music)
+                    {
+                        <option value="@data" selected>@data</option>
+                    }
+                    else
+                    {
+                        <option value="@data">@data</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="GroupID" class="form-label col-sm-2 col-form-label text-center">分區設定</label>
+        <div class="col-sm-10 row">
+            @for (int i = 1; i <= ViewBag.areaCount; i++)
+            {
+                int TerminalI = i - 1;
+                <div class="col-md-2 col-sm-4 col-6">
+                    @if(Model.Terminal[TerminalI] == "1")
+                    {
+                        <input type="checkbox" class="form-check-input" name="Terminal[]" value="@i" id="Terminal-@i" checked>
+                    }
+                    else
+                    {
+                        <input type="checkbox" class="form-check-input" name="Terminal[]" value="@i" id="Terminal-@i">
+                    }
+                    <label class="form-check-label" for="Terminal-@i">
+                        第 @i 區　
+                    </label>
+                </div>
+            }
         </div>
     </div>
     <div class="text-center">
