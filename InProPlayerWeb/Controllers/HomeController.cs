@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using InProPlayerWeb.Helper;
+using Microsoft.Extensions.Localization;
 
 namespace InProWeb.Controllers
 {
@@ -7,12 +8,13 @@ namespace InProWeb.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly PortHelper _portHelper;
+        private readonly IStringLocalizer<> _localizer;
 
         private readonly int areaCount = 20;
         private readonly int groupCount = 6;
         private bool[] ZoneStatus = Enumerable.Repeat(false, 20).ToArray();
 
-        public HomeController(PortHelper portHelper, ApplicationDbContext context)
+        public HomeController(PortHelper portHelper, ApplicationDbContext context, IStringLocalizer<MyResources> localizer)
         {
             _portHelper = portHelper;
             _context = context;

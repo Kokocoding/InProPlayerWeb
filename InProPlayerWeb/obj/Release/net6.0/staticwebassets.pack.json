@@ -5,16 +5,12 @@
       "PackagePath": "staticwebassets\\InProPlayerWeb.bundle.scp.css"
     },
     {
-      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\css\\SchedulerNPDay.css",
-      "PackagePath": "staticwebassets\\css\\SchedulerNPDay.css"
-    },
-    {
-      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\css\\group.css",
-      "PackagePath": "staticwebassets\\css\\group.css"
-    },
-    {
       "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\css\\player.css",
       "PackagePath": "staticwebassets\\css\\player.css"
+    },
+    {
+      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\css\\schedulerNPDay.css",
+      "PackagePath": "staticwebassets\\css\\schedulerNPDay.css"
     },
     {
       "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\css\\site.css",
@@ -29,16 +25,24 @@
       "PackagePath": "staticwebassets\\images\\logo.png"
     },
     {
-      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\js\\SchedulerNPDay.js",
-      "PackagePath": "staticwebassets\\js\\SchedulerNPDay.js"
-    },
-    {
       "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\js\\group.js",
       "PackagePath": "staticwebassets\\js\\group.js"
     },
     {
+      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\js\\home.js",
+      "PackagePath": "staticwebassets\\js\\home.js"
+    },
+    {
       "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\js\\player.js",
       "PackagePath": "staticwebassets\\js\\player.js"
+    },
+    {
+      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\js\\scheduler.js",
+      "PackagePath": "staticwebassets\\js\\scheduler.js"
+    },
+    {
+      "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\js\\schedulerNPDay.js",
+      "PackagePath": "staticwebassets\\js\\schedulerNPDay.js"
     },
     {
       "Id": "D:\\www\\InProPlayerWeb\\InProPlayerWeb\\wwwroot\\js\\site.js",

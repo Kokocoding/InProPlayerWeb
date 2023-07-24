@@ -1,5 +1,7 @@
 using InProPlayerWeb.Helper;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +13,19 @@ builder.Services.AddSingleton<NAudioHelper>();
 builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseSqlite(
     builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
 var app = builder.Build();
+
+//»y¨t³]©w
+var supportedCultures = new[] { "en-US", "zh-TW" };
+IList<CultureInfo> cultures = supportedCultures.Select(name => new CultureInfo(name)).ToList();
+app.UseRequestLocalization(new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture("en-US"),
+    SupportedCultures = cultures,
+    SupportedUICultures = cultures
+});
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

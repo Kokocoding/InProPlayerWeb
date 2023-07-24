@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+	<SatelliteResourceLanguages>en;zh-TW</SatelliteResourceLanguages>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,6 +29,12 @@
     <Folder Include="Views\Scheduler\" />
     <Folder Include="Views\SchedulerNPDay\" />
     <Folder Include="wwwroot\uploads\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\en-US.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
