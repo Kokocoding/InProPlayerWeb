@@ -48,7 +48,7 @@ namespace InProPlayerWeb.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            // 根据 id 获取对应的 Group 对象
+            // data serach ID from SchedulerNPDay
             SchedulerNPDay SchedulerNPDay = _context.SchedulerNPDay.Find(id);
 
             if (SchedulerNPDay != null)
@@ -74,26 +74,18 @@ namespace InProPlayerWeb.Controllers
         public IActionResult Append(SchedulerNPDay SchedulerNPDay, string NPDayMonth, string NPDayDay)
         {
             SchedulerNPDay.NPDay = NPDayMonth+"/"+NPDayDay;
-            // 将新的 Group 对象添加到上下文中
+
             _context.SchedulerNPDay.Add(SchedulerNPDay);
-
-            // 保存更改到数据库
             _context.SaveChanges();
-
-            // 重定向到 Index 页面
             return RedirectToAction("Index");
         }
         [HttpPost]
         public IActionResult Edit(SchedulerNPDay SchedulerNPDay, string NPDayMonth, string NPDayDay)
         {
             SchedulerNPDay.NPDay = NPDayMonth + "/" + NPDayDay;
-            // 更新 Group 对象的属性
+            
             _context.SchedulerNPDay.Update(SchedulerNPDay);
-
-            // 保存更改到数据库
             _context.SaveChanges();
-
-            // 重定向到 Index 页面
             return RedirectToAction("Index");
         }
     }
