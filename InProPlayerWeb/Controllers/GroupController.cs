@@ -48,7 +48,7 @@ namespace InProPlayerWeb.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            // 根据 id 获取对应的 Group 对象
+            // data search ID form Group
             Group group = _context.Group.Find(id);
 
             if (group != null)
@@ -79,25 +79,15 @@ namespace InProPlayerWeb.Controllers
                 title = title
             };
 
-            // 将新的 Group 对象添加到上下文中
             _context.Group.Add(newGroup);
-
-            // 保存更改到数据库
             _context.SaveChanges();
-
-            // 重定向到 Index 页面
             return RedirectToAction("Index");
         }
         [HttpPost]
         public IActionResult Edit(Group group)
         {
-            // 更新 Group 对象的属性
             _context.Group.Update(group);
-
-            // 保存更改到数据库
             _context.SaveChanges();
-
-            // 重定向到 Index 页面
             return RedirectToAction("Index");
         }
     }
