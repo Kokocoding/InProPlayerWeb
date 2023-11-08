@@ -148,13 +148,8 @@ namespace InProPlayerWeb.Controllers
                 Terminal = TerminalString(scheduler.Terminal)
             };
 
-            // 将新的 Scheduler 对象添加到上下文中
             _context.Scheduler.Add(newScheduler);
-
-            // 保存更改到数据库
             _context.SaveChanges();
-
-            // 重定向到 Index 页面
             return RedirectToAction("Index");
         }
         [HttpPost]
@@ -173,13 +168,9 @@ namespace InProPlayerWeb.Controllers
                 StartCron = CronString(scheduler.Time.ToString("ss mm HH"), scheduler.Week),
                 Terminal = TerminalString(scheduler.Terminal)
             };
-            // 更新 Scheduler 对象的属性
+            
             _context.Scheduler.Update(newScheduler);
-
-            // 保存更改到数据库
             _context.SaveChanges();
-
-            // 重定向到 Index 页面
             return RedirectToAction("Index");
         }
 
