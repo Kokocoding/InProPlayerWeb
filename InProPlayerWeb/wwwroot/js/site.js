@@ -14,9 +14,9 @@
         search = $("[name='search']"),
         choseID;
 
-    var currentUrl = window.location.pathname; // 获取当前页面的路径部分
-    var segments = currentUrl.split('/'); // 将路径部分按照斜杠分割成段落
-    var Controller = segments[1]; // 获取控制器名称
+    var currentUrl = window.location.pathname; // 頁面路徑
+    var segments = currentUrl.split('/'); // 分割路徑
+    var Controller = segments[1]; // Controller 名稱
 
     tableRow.on("click", function () {
         tableRow.removeClass('active');
