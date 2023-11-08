@@ -14,12 +14,12 @@ namespace InProPlayerWeb.Helper
 
         public string audioFilePath = "";
         public TimeSpan startTime = TimeSpan.Zero;
-        public float Volume { get; set; } = 0.5f; // 默认音量
+        public float Volume { get; set; } = 0.5f; // 預設音量
 
         public double Play()
         {
             audioFile = new AudioFileReader(audioFilePath);
-            audioFile.CurrentTime = startTime; // 设置播放的起始时间
+            audioFile.CurrentTime = startTime; // 播放的開始時間
             outputDevice = new WaveOutEvent();
             outputDevice.Volume = Volume;
             outputDevice.Init(audioFile);
